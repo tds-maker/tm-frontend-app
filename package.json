@@ -1,0 +1,59 @@
+{
+  "name": "tm-frontend",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "parcel index.html -p 3000",
+    "build": "parcel build index.html --no-cache",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "prettier": {
+    "printWidth": 200,
+    "parser": "typescript",
+    "proseWrap": false,
+    "useTabs": true,
+    "tabWidth": 4,
+    "jsxBracketSameLine": true
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "camelcase": "^5.0.0",
+    "classnames": "^2.2.6",
+    "immutable": "^3.8.2",
+    "moment": "^2.22.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "src": "^1.1.2",
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/camelcase": "^4.1.0",
+    "@types/classnames": "^2.2.6",
+    "@types/enzyme": "^3.1.12",
+    "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/immutable": "^3.8.7",
+    "@types/jest": "^23.3.0",
+    "@types/moment": "^2.13.0",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-redux": "^6.0.4",
+    "@types/react-router-dom": "^4.3.0",
+    "@types/redux": "^3.6.0",
+    "@types/redux-saga": "^0.10.5",
+    "@types/sinon": "^5.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.4.1",
+    "jest-css-modules-transform": "^2.0.0",
+    "node-sass": "^4.9.2",
+    "parcel-bundler": "^1.9.7",
+    "sinon": "^6.1.4",
+    "ts-jest": "^23.0.1"
+  },
+  "license": "MIT"
+}

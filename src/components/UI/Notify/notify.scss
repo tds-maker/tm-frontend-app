@@ -1,0 +1,24 @@
+.tm-notify-container {
+    position: absolute;
+    top:20px;
+    right: 20px;
+}
+
+.tm-notify {
+    padding: 15px 30px;
+    width: 300px;
+    box-shadow: 0px 4px 8px 3px rgba(212, 210, 210, 0.5);
+    border-radius: 4px;
+    color:#fff;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tm-notify h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tm-notify.error {
+    background-color: #e91e3f;
+}

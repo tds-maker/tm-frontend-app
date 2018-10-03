@@ -1,0 +1,87 @@
+.tm-folders {
+  padding: 0;
+  margin: 0;
+  max-width: 260px;
+}
+.tm-folders li {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.tm-folders li + li {
+  margin-top: 10px;
+}
+.tm-folders li.has-child {
+  padding-left: 20px;
+  cursor: pointer;
+}
+/* .tm-folders li.has-child.current{padding-left: 0;}
+.tm-folders li.has-child.current span{padding-left: 55px;}
+.tm-folders li.has-child.current > span:before{left: 20px;} */
+
+.tm-folders li.has-child:after {
+  content: '\e904';
+  font-family: 'icomoon' !important;
+  position: absolute;
+  top: 5px;
+  left: -6px;
+  color: #808fa3;
+  font-size: 22px;
+  line-height: 1;
+}
+.tm-folders li.has-child.open:after {
+  content: '\e901';
+}
+.tm-folders li.has-child.current:after {
+  color: #2ea2f8;
+}
+
+.tm-folders li:before {
+  content: '\e900';
+  font-family: 'icomoon' !important;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  font-size: 22px;
+  color: #c5d0de;
+  z-index: 1;
+}
+.tm-folders li span {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 34px;
+  border-radius: 4px;
+  padding-right: 20px;
+  white-space: nowrap;
+}
+.tm-folders li span:before {
+  content: '\e907';
+  font-family: 'icomoon' !important;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  font-size: 24px;
+  color: #c5d0de;
+  line-height: 1;
+}
+
+.tm-folders li.current:before {
+  color: #2ea2f8;
+}
+.tm-folders li.current > span {
+  background-color: #edf5ff;
+  color: #2ea2f8;
+}
+.tm-folders li.current > span:before {
+  color: #2ea2f8;
+}
+
+.tm-folders li ul {
+  margin-left: 15px;
+  margin-top: 10px;
+}

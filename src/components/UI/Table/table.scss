@@ -1,0 +1,41 @@
+.tm-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+// .tm-table.fixed {
+//     table-layout: fixed;
+//     white-space: nowrap;
+// }
+.tm-table.fixed tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+}
+
+
+.tm-table thead, .tm-table tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+.tm-table thead.has-scroll {
+    width: calc( 100% - 15px )
+}
+
+.tm-table th, {
+    padding: 5px;
+}
+.tm-table td{
+    padding: 2px 5px;
+}
+
+
+.tm-table th {
+    border-bottom: 1px solid #c5d0de;
+    padding: 5px;
+    font-size: 11px;
+}
+
+.tm-table td {
+    font-size: 12px;
+}

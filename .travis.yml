@@ -1,0 +1,11 @@
+language: nodejs
+node_js: 'stable'
+cache:
+  directories:
+    - node_modules
+install: npm install
+script:
+  - npm run build
+  - npm test
+notifications:
+  email: melihkorkmaz84@gmail.com

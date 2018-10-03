@@ -1,0 +1,125 @@
+.main-tabs {
+  margin-bottom: 100px;
+  margin-top: 77px;
+}
+.main-tabs ul {
+  text-align: center;
+  font-size: 0;
+}
+.main-tabs ul li {
+  padding: 5px 23px;
+  font-size: 20px;
+  display: inline-block;
+  background-color: #edf5ff;
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  min-width: 150px;
+}
+.main-tabs ul li:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.main-tabs ul li:last-child {
+  border-radius: 0 4px 4px 0;
+}
+/*.main-tabs ul li a{}*/
+.main-tabs ul li.active ~ li {
+  color: #b0b0b1;
+  cursor: default;
+}
+.main-tabs ul li.active {
+  background-color: #ffd012;
+  color: #4a4a4a;
+}
+.main-tabs ul li.active:before {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 21px;
+  right: 21px;
+  height: 3px;
+  background-color: #4da1ff;
+}
+
+.tabs {
+  text-align: center;
+}
+
+.tabs_content {
+  display: table;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 1px 6px 46px 0 rgba(215, 214, 214, 0.5),
+    1px 3px 4px 0 rgba(177, 177, 177, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.tabs_content.active {
+  display: table;
+}
+
+.tabs_content .step-action {
+  margin-top: 70px;
+  text-align: right;
+}
+.tabs_content .step-action .tm-btn {
+  min-width: 107px;
+}
+.tabs_content .step-action .tm-btn + .tm-btn {
+  margin-left: 20px;
+}
+
+.tabs_content .tm-checkbox {
+  margin-bottom: 30px;
+}
+.tabs_content .tm-input {
+  margin-bottom: 30px;
+}
+
+.tabs_content .col-head {
+  margin-bottom: 20px;
+}
+
+.tabs_content .col-head h3 {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.tabs_content .col-head h3 span.path {
+  font-size: 12px;
+  color: #808fa3;
+  font-weight: normal;
+}
+.tabs_content .col-head h3 span.path:after {
+  content: '/';
+  margin-left: 5px;
+}
+
+
+.tabs_content .col-text {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 13px;
+  color: #516070;
+  line-height: 1.54;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+.tabs_content .col-text h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.tab-col {
+  display: table-cell;
+  padding: 20px;
+  -webkit-transition: background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}

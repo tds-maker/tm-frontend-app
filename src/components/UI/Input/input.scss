@@ -1,0 +1,33 @@
+.tm-input {
+  width: 100%;
+  border: 1px solid #c5d0de;
+  border-radius: 4px;
+  height: 34px;
+  padding: 10px 13px;
+  margin-bottom: 15px;
+}
+
+.tm-input-default {
+  background-color: #ffffff;
+}
+
+.tm-input-gray {
+  background-color: #e9edf1;
+}
+
+.tm-input-dark {
+  background-color: #e9edf1;
+}
+
+.tm-input:focus {
+  outline: none;
+}
+
+.tm-input-gray::placeholder {
+  opacity: 1;
+  color: #b0b0b0;
+}
+.tm-input-default::placeholder {
+  opacity: 1;
+  color: #696969;
+}

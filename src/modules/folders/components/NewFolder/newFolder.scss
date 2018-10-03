@@ -1,0 +1,22 @@
+.create-folder-popup{position: absolute;top: 140px; left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+.new-folder {
+    width: 330px;
+}
+
+.new-folder > .tm-input {
+    width: 240px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.new-folder > .tm-btn {
+    width: 80px;
+    float: left;
+    margin-bottom: 0;
+}
