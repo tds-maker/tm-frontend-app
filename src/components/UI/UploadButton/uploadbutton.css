@@ -1,0 +1,17 @@
+.icon-file_upload:before {
+  content: '\e91a';
+}
+.toolbar-item i {
+  vertical-align: -2px;
+}
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #3e4955;
+}
