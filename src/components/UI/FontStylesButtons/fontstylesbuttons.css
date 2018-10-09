@@ -1,0 +1,29 @@
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #3e4955;
+}
+.toolbar-item i {
+  vertical-align: -2px;
+}
+.icon-bold:before {
+  content: '\e965';
+  color: #3e4955;
+}
+.icon-italic:before {
+  content: '\e969';
+  color: #3e4955;
+}
+.icon-underlined:before {
+  content: '\e927';
+}
+.toolbar-item.active:not(.dropdown) {
+  background-color: #e8f5fe;
+  border-radius: 3px;
+}
