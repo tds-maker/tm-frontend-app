@@ -1,0 +1,54 @@
+.toolbar-item + .toolbar-item {
+  margin-left: 4px;
+}
+
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #3e4955;
+}
+.font-size-popover {
+  top: 46px;
+  left: -5px;
+  width: 65px;
+  padding: 5px 0 4px !important;
+}
+.font-size-popover ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.font-size-popover ul li {
+  cursor: pointer;
+  line-height: 1.7;
+  font-size: 1.3rem;
+  padding-left: 24px;
+}
+.font-size input {
+  width: 33px;
+  text-align: center;
+  height: 29px;
+  vertical-align: 1px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+}
+.font-size-popover ul li:hover {
+  background-color: #edf5ff;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
