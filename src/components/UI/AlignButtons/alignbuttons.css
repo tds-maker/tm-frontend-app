@@ -1,0 +1,38 @@
+.icon-align_left:before {
+  content: '\e937';
+}
+.icon-align_justify:before {
+  content: '\e914';
+}
+.icon-align_center:before {
+  content: '\e913';
+}
+.icon-align_right:before {
+  content: '\e915';
+}
+.align-popover span:hover {
+  background-color: #e8f5fe;
+}
+
+.align-popover {
+  width: 170px;
+  top: 60px;
+  left: -6px;
+  line-height: normal;
+  padding: 5px !important;
+  display: none;
+}
+.align-popover span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 7px 9px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.align-popover span:not(:first-child) {
+  margin-left: 5px;
+}
+.align-popover span i {
+  vertical-align: middle;
+}
