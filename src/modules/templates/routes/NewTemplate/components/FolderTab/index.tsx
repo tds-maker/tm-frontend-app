@@ -1,3 +1,3 @@
-import FolderTab from './FolderTab';
+import FolderTab from './FolderTab'
 
-export default FolderTab;
+export default FolderTab

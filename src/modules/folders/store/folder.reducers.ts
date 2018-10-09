@@ -1,77 +1,82 @@
-import IAction from "../../../store/IAction";
-import Folder from "../models/Folder";
-import BaseReducer from "../../../store/BaseReducer";
-import { List } from "immutable";
+import { List } from 'immutable'
+import BaseReducer from '../../../store/BaseReducer'
+import IAction from '../../../store/IAction'
+import Folder from '../models/Folder'
 
 abstract class FolderReducer extends BaseReducer<List<Folder>> {
 	public foldersFetched(state: List<Folder>, payload: any): List<Folder> {
-		const { data, source } = payload;
+		const { data, source } = payload
 
 		if (!this.isForCurrentInstance(source)) {
-			return state;
+			return state
 		}
 
 		return state.merge(
 			data.map((x: any) => {
-				const isCurrent = x.parentId === undefined;
-				const isOpen = x.parentId === undefined;
+				const isCurrent = x.parentId === undefined
+				const isOpen = x.parentId === undefined
 				return new Folder({
 					...x,
 					isCurrent,
-					isOpen
-				});
+					isOpen,
+				})
 			})
-		);
+		)
 	}
 
 	public selectFolder(state: List<Folder>, payload: any): List<Folder> {
 		if (!this.isForCurrentInstance(payload.folderType)) {
-			return state;
+			return state
 		}
 
-		const targetFolder = state.find((folder: Folder) => folder._id === payload.id && folder.isCurrent);
+		const targetFolder = state.find(
+			(folder: Folder) => folder._id === payload.id && folder.isCurrent
+		)
 
 		// don't select 2 times
 		if (targetFolder) {
-			return state;
+			return state
 		}
 		return state.map((x: Folder) => {
 			if (x._id === payload.id || x.isCurrent) {
-				return x.set("isCurrent", !x.isCurrent);
+				return x.set('isCurrent', !x.isCurrent)
 			} else {
-				return x;
+				return x
 			}
-		}) as List<Folder>;
+		}) as List<Folder>
 	}
 
 	public toggleFolder(state: List<Folder>, payload: any): List<Folder> {
 		if (!this.isForCurrentInstance(payload.folderType)) {
-			return state;
+			return state
 		}
-		const folder = state.find((x: Folder) => x._id === payload.id);
-		const indexOf = state.indexOf(folder);
-		return state.set(indexOf, folder.set("isOpen", !folder.isOpen) as Folder);
+		const folder = state.find((x: Folder) => x._id === payload.id)
+		const indexOf = state.indexOf(folder)
+		return state.set(indexOf, folder.set('isOpen', !folder.isOpen) as Folder)
 	}
 
 	private isForCurrentInstance(folderType: string): boolean {
-		return (folderType === "datasheet" && this instanceof DatasheetFolderReducer) || (folderType === "template" && this instanceof TemplateFolderReducer);
+		return (
+			(folderType === 'datasheet' && this instanceof DatasheetFolderReducer) ||
+			(folderType === 'template' && this instanceof TemplateFolderReducer)
+		)
 	}
 }
 
 class TemplateFolderReducer extends FolderReducer {}
 class DatasheetFolderReducer extends FolderReducer {}
 
-const templateReducer = new TemplateFolderReducer();
+const templateReducer = new TemplateFolderReducer()
 const templateReducerFunc = (state: List<Folder> = List<Folder>(), action: IAction) => {
-	return templateReducer.call(state, action);
-};
+	return templateReducer.call(state, action)
+}
 
-const datasheetReducer = new DatasheetFolderReducer();
+const datasheetReducer = new DatasheetFolderReducer()
 const datasheetReducerFunc = (state: List<Folder> = List<Folder>(), action: IAction) => {
-	return datasheetReducer.call(state, action);
-};
+	return datasheetReducer.call(state, action)
+}
 
 export default {
 	templateFoldersReducer: templateReducerFunc,
-	datasheetFoldersReducer: datasheetReducerFunc
-};
+	datasheetFoldersReducer: datasheetReducerFunc,
+}

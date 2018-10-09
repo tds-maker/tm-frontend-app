@@ -77,7 +77,9 @@ time {
   display: block;
 }
 /********************/
-
+html {
+  font-size: 10px;
+}
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -90,6 +92,7 @@ body {
   font-size: 13px;
   font-family: 'Open Sans', sans-serif;
   background-color: #f9f9f9;
+  min-width: 1280px;
 }
 
 .pull-left {
@@ -128,5 +131,18 @@ label {
   display: block;
   margin-bottom: 15px;
 }
-.popup{background-color: #ffffff; box-shadow: 1px 6px 46px 0 rgba(215, 214, 214, 0.5), 1px 3px 4px 0 rgba(177, 177, 177, 0.5); border-radius: 4px; padding: 15px 15px 20px;}
-.popup .close-popup{color: #2ea2f8;font-size: 12px; cursor: pointer;position: absolute;top: 7px; right: 7px; line-height: 1;}
+.popup {
+  background-color: #ffffff;
+  box-shadow: 1px 6px 46px 0 rgba(215, 214, 214, 0.5), 1px 3px 4px 0 rgba(177, 177, 177, 0.5);
+  border-radius: 4px;
+  padding: 15px 15px 20px;
+}
+.popup .close-popup {
+  color: #2ea2f8;
+  font-size: 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  line-height: 1;
+}

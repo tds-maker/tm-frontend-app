@@ -1,19 +1,19 @@
-import { Record, fromJS } from "immutable";
-import Folder from "./Folder";
+import { fromJS, Record } from 'immutable'
+import Folder from './Folder'
 
 interface IFolderState {
-	folders: Folder[];
-	current: Folder;
+	folders: Folder[]
+	current: Folder
 }
 const FolderStateRecord = Record({
 	folders: [],
-	current: undefined
-});
+	current: undefined,
+})
 
 export default class FolderState extends FolderStateRecord implements IFolderState {
-	public folders: Folder[];
-	public current: Folder;
+	public folders: Folder[]
+	public current: Folder
 	constructor(params?: any) {
-		super(fromJS(params));
+		super(fromJS(params))
 	}
 }
