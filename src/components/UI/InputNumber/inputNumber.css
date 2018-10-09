@@ -1,0 +1,87 @@
+.input.small {
+  padding: 5px;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.qtyminus,
+.qtyplus {
+  border: none;
+  width: 17px;
+  position: absolute;
+  bottom: 0;
+  right: 1px;
+  background-color: rgba(244, 247, 249, 0.4);
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 12px;
+  color: #808fa3;
+  line-height: 1;
+  padding: 0;
+  height: 13px;
+  text-align: center;
+  border-right: 1px solid #e9eff4;
+  outline: none;
+}
+.qtyplus {
+  top: 0;
+  bottom: auto;
+  border-radius: 0 4px 0 0;
+  border-top: 1px solid #e9eff4;
+  height: 12px;
+}
+
+.qtyminus,
+.qtyplus {
+  border: none;
+  width: 17px;
+  position: absolute;
+  bottom: 0;
+  right: 1px;
+  background-color: rgba(244, 247, 249, 0.4);
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 12px;
+  color: #808fa3;
+  line-height: 1;
+  padding: 0;
+  height: 13px;
+  text-align: center;
+  border-right: 1px solid #e9eff4;
+  outline: none;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #c5d0de;
+  border-radius: 4px;
+  height: 34px;
+  padding: 10px 13px;
+  margin-bottom: 15px;
+}
+
+.input.small {
+  padding: 5px;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.plus-minus-box .input {
+  border: 1px solid #e9eff4;
+  font-size: 13px;
+  margin: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.qtyplus {
+  top: 0;
+  bottom: auto;
+  border-radius: 0 4px 0 0;
+  border-top: 1px solid #e9eff4;
+  height: 12px;
+}
+.qtyminus {
+  border-top: 1px solid #e9eff4;
+  border-bottom: 1px solid #e9eff4;
+  border-radius: 0 0 4px 0;
+}
