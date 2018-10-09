@@ -1,0 +1,73 @@
+.layouts {
+  text-align: center;
+  border-bottom: 1px solid #ececec;
+  margin-left: -35px;
+  margin-right: -35px;
+  margin-bottom: 19px;
+  padding: 0 5px 36px;
+}
+.layouts .layout-box {
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  color: #2b3d51;
+  margin-top: 57px;
+  cursor: pointer;
+}
+.layouts .layout-box:nth-child(1),
+.layouts .layout-box:nth-child(2) {
+  margin-top: 0;
+}
+.layouts .layout-box:nth-child(even) {
+  margin-left: 42px;
+}
+.layouts .layout-box i[class*='icon'] {
+  font-size: 80px;
+  margin-bottom: 8px;
+  display: block;
+  color: #e9edf1;
+}
+
+.layouts .layout-box.active i[class*='icon'] {
+  color: #4da1ff;
+}
+[class^='icon-'],
+[class*=' icon-'] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.layouts .layout-box i[class*='icon'] {
+  font-size: 80px;
+  margin-bottom: 8px;
+  display: block;
+  color: #e9edf1;
+}
+.layouts .layout-box.active i[class*='icon'] {
+  color: #4da1ff;
+}
+
+.icon-column1:before {
+  content: '\e990';
+}
+.icon-column2:before {
+  content: '\e974';
+}
+.icon-column3:before {
+  content: '\e975';
+}
+.icon-column_top_single:before {
+  content: '\e98f';
+}
+.icon-column_bottom-single:before {
+  content: '\e977';
+}
+.icon-column_panel:before {
+  content: '\e976';
+}
