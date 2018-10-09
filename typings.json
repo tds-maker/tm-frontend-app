@@ -1,0 +1,5 @@
+{
+    "globalDependencies": {
+      "index": "file:custom_typings/index.d.ts"
+    }
+  }
