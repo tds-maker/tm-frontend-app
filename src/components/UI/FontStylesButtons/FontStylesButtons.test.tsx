@@ -55,6 +55,6 @@ describe('FontStylesButtons Component', () => {
 				.find('a')
 				.at(0)
 				.prop('className')
-		).toEqual('toolbar-item active ')
+		).toEqual('toolbar-item active')
 	})
 })
