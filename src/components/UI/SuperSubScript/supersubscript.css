@@ -1,0 +1,22 @@
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #3e4955;
+}
+.toolbar .group {
+  float: left;
+  padding: 5px 7px;
+  border-left: 1px solid #dce0e2;
+}
+.icon-subscript:before {
+  content: '\e90e';
+}
+.icon-superscript:before {
+  content: '\e90f';
+}
