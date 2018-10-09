@@ -1,0 +1,27 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "jsRules": {},
+    "linterOptions": {
+      "exclude": [
+        "src/**/*.test.tsx",
+        "src/**/*.test.ts",
+        "src/**/*.sagas.ts"
+      ]
+    },
+    "rules": {
+      "variable-name": false,
+      "function-name": false,
+      "jsx-no-lambda": false,
+      "no-debugger": true,
+      "no-console": false,
+      "object-literal-sort-keys": false,
+      "strictNullChecks": false,
+      "ordered-imports": [ true, { "import-sources-order": "any", "named-imports-order": "case-insensitive" } ],
+      "max-classes-per-file":false,
+      "no-var-requires": false,
+      "no-unnecessary-initializer": false,
+      "no-angle-bracket-type-assertion": false
+    },
+    "rulesDirectory": []
+  }
