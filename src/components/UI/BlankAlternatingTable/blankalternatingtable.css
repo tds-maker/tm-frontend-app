@@ -1,0 +1,39 @@
+.text-yellow {
+  color: #ffd012 !important;
+}
+.icon-grid_on:before {
+  content: '\e92c';
+}
+.table-popover {
+  top: 60px;
+  left: -126px;
+  width: 282px;
+  padding: 15px 15px 5px;
+}
+.table-popover:before {
+  left: 50%;
+  margin-left: -10px;
+}
+.table-popover .tablecol {
+  float: left;
+  font-size: 11px !important;
+  color: #2b3d51;
+  text-align: center;
+  cursor: pointer;
+}
+.table-popover table {
+  border: 1px solid #d6d6d6;
+  width: 116px;
+  height: 74px;
+  margin-bottom: 3px;
+  border-collapse: collapse;
+}
+.table-popover table td {
+  border: 1px solid #d6d6d6;
+}
+.table-popover .tablecol + .tablecol {
+  margin-left: 16px;
+}
+.table-popover table.colored tr:nth-child(odd) td {
+  background-color: #edf5ff;
+}

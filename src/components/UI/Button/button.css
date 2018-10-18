@@ -1,0 +1,60 @@
+.tm-btn {
+  display: inline-block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: #fff;
+  text-align: center;
+  padding: 6px 13px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  -webkit-transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+
+.tm-btn:hover {
+  opacity: 0.8; }
+
+.tm-btn-small {
+  padding: 1px 5px; }
+
+.tm-btn-small i {
+  vertical-align: -1px; }
+
+.tm-btn-yellow {
+  background-color: #ffd012;
+  border-color: #ffd012;
+  color: #354052; }
+
+.tm-btn-gray {
+  background-color: #c5c5c5;
+  border-color: #c5c5c5; }
+
+.tm-btn-gray2 {
+  background-color: #c5d0de;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #354052; }
+
+.tm-btn-gray3 {
+  background-color: #edf5ff;
+  border-color: #edf5ff;
+  color: #767676; }
+
+.tm-btn-blue {
+  background-color: #4da1ff;
+  border-color: #4da1ff; }
+
+.tm-btn-border-blue {
+  color: #4da1ff;
+  border-color: rgba(77, 161, 255, 0.7); }
+
+.tm-btn + .tm-btn {
+  margin-left: 5px; }
+
+.tm-btn-blue:disabled {
+  text-decoration: line-through;
+  cursor: not-allowed; }

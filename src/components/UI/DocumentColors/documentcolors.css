@@ -1,0 +1,13 @@
+.popover-box .colorpicker-display-box + .colorpicker-palette {
+  margin-top: 18px;
+}
+
+.colorpicker-palette + .colorpicker-display-box {
+  margin-top: 10px;
+}
+.colorpicker-display-box {
+  position: relative;
+  z-index: 5;
+  display: inline-block;
+  margin-right: 6px;
+}

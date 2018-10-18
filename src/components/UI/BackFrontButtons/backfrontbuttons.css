@@ -1,0 +1,6 @@
+.icon-flip_to_back:before {
+  content: '\e91b';
+}
+.icon-flip_to_front:before {
+  content: '\e91c';
+}

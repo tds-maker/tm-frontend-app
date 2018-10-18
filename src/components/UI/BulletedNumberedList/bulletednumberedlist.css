@@ -1,0 +1,24 @@
+.icon-list_bulleted:before {
+  content: '\e939';
+}
+.icon-list_numbered:before {
+  content: '\e93a';
+}
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+
+  text-decoration: none;
+  color: #3e4955;
+}
+.toolbar-item i {
+  vertical-align: -2px;
+}
+.toolbar-item + .toolbar-item {
+  margin-left: 4px;
+}

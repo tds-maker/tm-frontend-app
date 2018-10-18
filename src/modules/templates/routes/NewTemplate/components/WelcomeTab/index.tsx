@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
-import IStore from '../../../../../../store/IStore';
+import { connect } from 'react-redux'
+import IStore from '../../../../../../store/IStore'
 
-import Welcome, { IProps } from './Welcome';
+import Welcome, { IProps } from './Welcome'
 
 interface IStateFromProps {
-  firstName?: string;
+	firstName?: string
 }
 
 const mapStateToProps = (state: IStore) => ({
-  firstName: state.user.firstName
-});
+	firstName: state.user.firstName,
+})
 
-export default connect<IStateFromProps, any, IProps>(mapStateToProps)(Welcome);
+export default connect<IStateFromProps, any, IProps>(mapStateToProps)(Welcome)

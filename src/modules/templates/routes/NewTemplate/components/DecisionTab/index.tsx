@@ -1,2 +1,2 @@
-import DecisionTab from "./DecisionTab";
-export default DecisionTab;
+import DecisionTab from './DecisionTab'
+export default DecisionTab

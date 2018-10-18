@@ -1,11 +1,13 @@
-language: nodejs
-node_js: 'stable'
-cache:
-  directories:
-    - node_modules
+language: node_js
+node_js:
+  - '9'
+  - '8'
+  - node
 install: npm install
 script:
   - npm run build
   - npm test
 notifications:
-  email: melihkorkmaz84@gmail.com
+  email:
+  - melihkorkmaz84@gmail.com
+  - info@mkoseoglu.com

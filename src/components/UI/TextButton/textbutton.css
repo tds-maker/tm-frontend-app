@@ -1,0 +1,6 @@
+.text-blue {
+  color: #4da1ff !important;
+}
+.icon-text_fields:before {
+  content: '\e930';
+}

@@ -1,0 +1,120 @@
+.toolbar .group {
+  float: left;
+  padding: 5px 7px;
+  border-left: 1px solid #dce0e2;
+}
+.toolbar-item {
+  padding: 0 6px;
+  display: inline-block !important;
+  vertical-align: middle;
+  line-height: 29px;
+  min-width: 21px;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #3e4955;
+}
+.popover-trigger {
+  display: block;
+}
+.toolbar-item.active:not(.dropdown) {
+  background-color: #e8f5fe;
+  border-radius: 3px;
+}
+.toolbar-item i {
+  vertical-align: -2px;
+}
+.icon-insert_link:before {
+  content: '\e92d';
+}
+.link-popover {
+  left: -6px;
+  top: 56px;
+  padding: 12px;
+  width: 360px;
+  display: none;
+}
+.popover {
+  background-color: #fff;
+  padding: 17px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  cursor: default;
+  z-index: 5;
+  line-height: 1.1;
+}
+.label {
+  font-size: 1.3rem;
+  line-height: 29px;
+  color: #354052;
+}
+.link-popover form {
+  position: relative;
+  padding-right: 96px;
+}
+.link-popover form .input {
+  margin-bottom: 0;
+}
+.input.dark {
+  background-color: #e9edf1 !important;
+}
+.input {
+  width: 100%;
+  border: 1px solid #c5d0de;
+  border-radius: 4px;
+  height: 34px;
+  padding: 10px 13px;
+  margin-bottom: 15px;
+  font-family: 'Open Sans', sans-serif;
+  outline: none;
+}
+.link-popover form .btn {
+  width: 86px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.btn.btn-medium {
+  padding: 8px 20px;
+}
+.btn-blue {
+  background-color: #4da1ff;
+}
+.btn {
+  display: inline-block;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  color: #fff;
+  text-align: center;
+  padding: 6px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.link-popover:before {
+  left: 13px;
+}
+
+.popover:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 12px 10px;
+  border-color: transparent transparent #ffffff transparent;
+  position: absolute;
+  top: -12px;
+  left: 50px;
+}
+.popover.show {
+  display: block !important;
+}
+.apply{
+  font-size: 14px !important
+}

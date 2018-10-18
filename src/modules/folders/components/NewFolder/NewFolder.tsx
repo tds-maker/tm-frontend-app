@@ -1,36 +1,36 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { Button, Input } from "../../../../components";
+import { Button, Input } from '../../../../components'
 
-import "./newFolder.scss";
+import './newFolder.scss'
 
 export interface IProps {
-	folderType: string;
-	isActive: boolean;
-	onCloseClick: () => void;
-	createFolder?: (folderType: string, name: string) => void;
+	folderType: string
+	isActive: boolean
+	onCloseClick: () => void
+	createFolder?: (folderType: string, name: string) => void
 }
 
 interface IState {
-	folderName: string;
+	folderName: string
 }
 
 export default class NewFolder extends React.PureComponent<IProps, IState> {
 	constructor(props: IProps) {
-		super(props);
+		super(props)
 
 		this.state = {
-			folderName: ""
-		};
+			folderName: '',
+		}
 
-		this.onValueChange = this.onValueChange.bind(this);
-		this.onCreate = this.onCreate.bind(this);
+		this.onValueChange = this.onValueChange.bind(this)
+		this.onCreate = this.onCreate.bind(this)
 	}
 
 	public componentDidUpdate() {
-		const wrapper = document.getElementById("createFolderInput");
+		const wrapper = document.getElementById('createFolderInput')
 		if (wrapper) {
-			wrapper.focus();
+			wrapper.focus()
 		}
 	}
 
@@ -42,30 +42,36 @@ export default class NewFolder extends React.PureComponent<IProps, IState> {
 				</span>
 				<label>New Folder</label>
 				<form onSubmit={this.onCreate} className="new-folder">
-					<Input color="dark" placeholder="Type folder name" value={this.state.folderName} onChange={this.onValueChange} id="createFolderInput" />
+					<Input
+						color="dark"
+						placeholder="Type folder name"
+						value={this.state.folderName}
+						onChange={this.onValueChange}
+						id="createFolderInput"
+					/>
 					<Button color="blue" type="submit" renderAs="button">
 						Create
 					</Button>
 				</form>
 			</div>
-		) : null;
+		) : null
 	}
 
 	private onValueChange(e: any) {
 		this.setState({
-			folderName: e.target.value
-		});
+			folderName: e.target.value,
+		})
 	}
 
 	private onCreate(e: React.FormEvent) {
-		e.preventDefault();
-		if (!this.state.folderName || this.state.folderName === "") {
-			return;
+		e.preventDefault()
+		if (!this.state.folderName || this.state.folderName === '') {
+			return
 		} else {
 			if (this.props.createFolder) {
-				this.props.createFolder(this.props.folderType, this.state.folderName);
-				this.props.onCloseClick();
-				this.setState({ folderName: "" });
+				this.props.createFolder(this.props.folderType, this.state.folderName)
+				this.props.onCloseClick()
+				this.setState({ folderName: '' })
 			}
 		}
 	}

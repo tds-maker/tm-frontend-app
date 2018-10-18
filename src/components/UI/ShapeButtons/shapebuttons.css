@@ -1,0 +1,41 @@
+.icon-triangle:before {
+  content: '\e94d';
+}
+.icon-circle:before {
+  content: '\e94e';
+}
+.icon-shape:before {
+  content: '\e929';
+}
+.shape-popover {
+  width: 167px;
+  top: 60px;
+  left: -6px;
+  line-height: normal;
+  padding: 5px;
+  display: none;
+}
+.shape-popover span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 7px 9px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  margin-left: 3px;
+}
+.shape-popover span i {
+  vertical-align: middle;
+}
+.shape-popover:before {
+  left: 13px;
+}
+.icon-square:before {
+  content: '\e94b';
+}
+.icon-square_rd:before {
+  content: '\e94c';
+}
+.shape-popover span:hover {
+  background-color: #e9eaec;
+}
