@@ -36,4 +36,4 @@ export { default as TemplateSelect } from './UI/TemplateSelect/TemplateSelect'
 export { default as TextButton } from './UI/TextButton/TextButton'
 export { default as UnduRedoButton } from './UI/UndoRedoButton/UndoRedoButton'
 export { default as UploadButton } from './UI/UploadButton/UploadButton'
-export { default as Toolbar} from './UI/Toolbar/Toolbar';
+export { default as Toolbar } from './UI/Toolbar/Toolbar'
