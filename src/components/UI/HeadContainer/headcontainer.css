@@ -7,6 +7,18 @@
   width: 35%;
   float: left;
 }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 1px #f2f2f2;
+  padding: 29px 15px 9px;
+  z-index: 10;
+  height: 143px;
+  min-width: 1273px;
+}
 .header .logo {
   margin: 0 37px 0 10px;
   float: left;

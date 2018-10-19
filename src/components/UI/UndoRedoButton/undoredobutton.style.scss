@@ -1,0 +1,22 @@
+.icon-redo:before {
+  content: '\e933';
+}
+.icon-undo:before {
+  content: '\e934';
+}
+
+.history-step {
+  color: #3e4955 !important;
+  padding: 0 5px !important;
+  font-size: 23px !important;
+  line-height: 29px !important;
+
+  &:hover {
+    color: #4da1ff !important;
+  }
+
+  &--disabled {
+    color: #c5c5c5 !important;
+    pointer-events: none;
+  }
+}
