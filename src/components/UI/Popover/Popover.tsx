@@ -69,7 +69,6 @@ export default class IPopover extends React.Component<IProps, IState> {
 			: !this.state.isPopoverActive
 	}
 	private handleOutsideClick = (e: MouseEvent) => {
-		console.log(this.isPopoverActive())
 		if (!this.node.contains(e.target)) {
 			if (this.isPopoverActive()) {
 				document.addEventListener('click', this.handleOutsideClick, false)

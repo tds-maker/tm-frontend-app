@@ -1,0 +1,22 @@
+.header-footer-resizer{
+    position: relative;
+
+    &__bottom-line{
+        cursor: row-resize;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        height: 5px;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+    }
+    &__top-line{
+        cursor: row-resize;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+        height: 5px;
+        border-top: 1px dashed rgba(0, 0, 0, 0.3);
+    }
+}

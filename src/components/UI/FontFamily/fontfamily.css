@@ -4,6 +4,7 @@
 
 .popover-trigger {
   display: block;
+  user-select: none;
 }
 .font-family-popover {
   top: 60px;

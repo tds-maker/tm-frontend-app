@@ -2,6 +2,7 @@
 
 .popover-trigger {
   display: block;
+  user-select: none;
 }
 
 .icon-insert_link:before {

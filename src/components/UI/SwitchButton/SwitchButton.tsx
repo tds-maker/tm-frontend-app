@@ -3,24 +3,28 @@ import * as React from 'react'
 import './switchbutton.css'
 
 interface IProps {
-	onChange?: ((e: any) => void)
-	id?: string
-	checked: boolean
+	onChange?: ((e: any) => void);
+	id?: string;
+	checked: boolean;
+	children?: string;
 }
 
-const SwitchButton: React.SFC<IProps> = ({ id, onChange, checked }: IProps) => {
+const SwitchButton: React.SFC<IProps> = ({ id, onChange, checked, children }: IProps) => {
 	const className = classNames({
 		'onoffswitch-checkbox': true,
 	})
 	return (
-		<input
+		<div className="onoffswitch">
+			<input
 			type="checkbox"
 			name="onoffswitch"
 			checked={checked}
 			className={className}
 			id={id}
 			onChange={onChange}
-		/>
+			/>
+			<label className="onoffswitch-label" htmlFor={id}/>
+		</div>
 	)
 }
 export default SwitchButton

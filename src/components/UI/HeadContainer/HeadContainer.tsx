@@ -13,11 +13,18 @@ interface IRightButtonsProps {
 	onPublishButton: (e: React.MouseEvent) => void
 }
 
+interface IPropsInfo {
+	name?: string;
+	version?: string;
+	languages?: string
+}
+
 export default class HeadContainer extends React.PureComponent<
-	ICenterButtonsProps & IRightButtonsProps,
+	IPropsInfo & ICenterButtonsProps & IRightButtonsProps,
 	any
 > {
 	public render() {
+		const {name, version, languages } = this.props;
 		return (
 			<header className="header">
 				<div className="container clearfix">
@@ -29,8 +36,8 @@ export default class HeadContainer extends React.PureComponent<
 							<i className="icon-view_headline" />
 						</a>
 						<div className="head-text">
-							<h4>Wood Coating Template</h4>
-							<p>Archive (v0.0) | English, Spanich, Turkish, Russian</p>
+							<h4>{name}</h4>
+							<p>{version} | {languages}</p>
 						</div>
 					</div>
 					<div className="head-mid-col text-center">

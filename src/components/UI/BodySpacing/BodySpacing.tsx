@@ -15,10 +15,10 @@ export default class BodySpacing extends React.PureComponent<IProps> {
 		const { left, right, bottom, top } = this.props
 		return (
 			<div className="body-padding-box">
-				<p className="small-title">Body spacing (padding)</p>
+				<p className="small-title">Margin</p>
 				<div className="setting-row">
 					<div className="setting-col">
-						<label className="small-label">Left</label>
+						<label className="small-label">Left (px)</label>
 						<div className="plus-minus-box">
 							<InputNumber
 								value={left}
@@ -27,7 +27,7 @@ export default class BodySpacing extends React.PureComponent<IProps> {
 						</div>
 					</div>
 					<div className="setting-col">
-						<label className="small-label">Right</label>
+						<label className="small-label">Right (px)</label>
 						<div className="plus-minus-box">
 							<InputNumber
 								value={right}
@@ -38,7 +38,7 @@ export default class BodySpacing extends React.PureComponent<IProps> {
 				</div>
 				<div className="setting-row">
 					<div className="setting-col">
-						<label className="small-label">Top</label>
+						<label className="small-label">Top (px)</label>
 						<div className="plus-minus-box">
 							<InputNumber
 								value={top}
@@ -47,7 +47,7 @@ export default class BodySpacing extends React.PureComponent<IProps> {
 						</div>
 					</div>
 					<div className="setting-col">
-						<label className="small-label">Bottom</label>
+						<label className="small-label">Bottom (px)</label>
 						<div className="plus-minus-box">
 							<InputNumber
 								value={bottom}

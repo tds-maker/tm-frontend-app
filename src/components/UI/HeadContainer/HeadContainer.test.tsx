@@ -18,7 +18,7 @@ describe('Head Container Component', () => {
 	})
 	it('should render successfully', () => {
 		expect(wrapper.exists()).toEqual(true)
-		expect(wrapper.type()).toEqual('div')
+		expect(wrapper.type()).toEqual('header')
 	})
 	it('when click onDesignButton', () => {
 		const mockFn = jest.fn()

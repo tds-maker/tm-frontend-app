@@ -1,13 +1,16 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import createSagaMiddleware from 'redux-saga'
 
-import sagas from './rootSaga'
+// import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
+// import sagas from './rootSaga';
 
 import userReducer from './reducers/user.reducer'
 import appReducer from './reducers/app.reducer'
-import templateReducer from '../modules/templates/store/template/template.reducer'
-import templatesReducer from '../modules/templates/store/templates/templates.reducer'
-import folderReducers from '../modules/folders/store/folder.reducers'
+import templateReducer from '../modules/templates/store';
+import undoRedoMiddleware from './middlewares/unde-redo.middleware';
+// import templateReducer from '../modules/templates/store/template/template.reducer'
+// import templatesReducer from '../modules/templates/store/templates/templates.reducer'
+// import folderReducers from '../modules/folders/store/folder.reducers'
 
 const enhancers: any = []
 let composeEnhancers = compose
@@ -18,22 +21,25 @@ if (process.env.NODE_ENV === 'development') {
 	}
 }
 
-const sagaMiddleware = createSagaMiddleware()
+// const sagaMiddleware = createSagaMiddleware()
 
 const allReducers = combineReducers({
 	app: appReducer,
 	user: userReducer,
-	template: templateReducer,
-	templates: templatesReducer,
-	templateFolders: folderReducers.templateFoldersReducer,
-	datasheetFolders: folderReducers.datasheetFoldersReducer,
+	template: templateReducer
+	// template: templateReducer,
+	// templates: templatesReducer,
+	// templateFolders: folderReducers.templateFoldersReducer,
+	// datasheetFolders: folderReducers.datasheetFoldersReducer,
 })
+
+
 
 const store = createStore(
 	allReducers,
-	composeEnhancers(applyMiddleware(sagaMiddleware), ...enhancers)
+	composeEnhancers(applyMiddleware(thunk, undoRedoMiddleware), ...enhancers)
 )
 
-sagaMiddleware.run(sagas)
+// sagaMiddleware.run(sagas)
 
 export default store
