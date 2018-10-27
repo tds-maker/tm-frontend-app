@@ -1,7 +1,7 @@
 import types from '../types'
 import { IUndeRedoStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
-import { defaultHistoryState } from './defaults';
+import { defaultHistoryState } from './defaults'
 
 const historyReducer = (state = defaultHistoryState, action: IAction): IUndeRedoStore => {
 	switch (action.type) {

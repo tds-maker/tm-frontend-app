@@ -1,7 +1,7 @@
 import types from '../types'
 import { IFooterStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
-import {defaultFooterState} from './defaults';
+import { defaultFooterState } from './defaults'
 
 const footersReducer = (state = defaultFooterState, action: IAction): IFooterStore => {
 	switch (action.type) {

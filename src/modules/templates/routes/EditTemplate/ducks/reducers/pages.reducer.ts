@@ -1,7 +1,7 @@
 import { IPagesStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
 import types from '../types'
-import { defaultPageState } from './defaults';
+import { defaultPageState } from './defaults'
 
 const setPageMargin = (state: IPagesStore, action: IAction) => {
 	const { pageMeta, styles } = action.payload

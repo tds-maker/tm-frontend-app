@@ -1,7 +1,7 @@
-import { IOptionsStore } from '../interfaces';
-import IAction from '../../../../../../store/IAction';
-import types from '../types';
-import { defaultOptionsState } from './defaults';
+import { IOptionsStore } from '../interfaces'
+import IAction from '../../../../../../store/IAction'
+import types from '../types'
+import { defaultOptionsState } from './defaults'
 
 const optionsReducer = (state = defaultOptionsState, action: IAction): IOptionsStore => {
 	switch (action.type) {

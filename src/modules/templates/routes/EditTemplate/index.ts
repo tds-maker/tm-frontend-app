@@ -9,8 +9,11 @@ const mapStateToProps = (state: IStore): object => ({
 	options: editTemplateSelectors.options(state),
 })
 
-const mapDispatchToProps = (dispatch:any) => ({
-	fetchTemplate: (id:string) => dispatch(editTemplateOperations.fetchTempate(id))
+const mapDispatchToProps = (dispatch: any) => ({
+	fetchTemplate: (id: string) => dispatch(editTemplateOperations.fetchTempate(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditTemplate)
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(EditTemplate)

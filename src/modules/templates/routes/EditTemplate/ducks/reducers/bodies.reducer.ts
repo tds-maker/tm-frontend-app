@@ -1,7 +1,7 @@
 import types from '../types'
 import { IBodyStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
-import {defaultBodyState} from './defaults';
+import { defaultBodyState } from './defaults'
 
 const bodiesReducer = (state = defaultBodyState, action: IAction): IBodyStore => {
 	let pageMeta

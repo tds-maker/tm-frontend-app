@@ -1,7 +1,7 @@
 import types from '../types'
 import { IHeaderStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
-import { defaultHeaderState } from './defaults';
+import { defaultHeaderState } from './defaults'
 
 const headersReducer = (state = defaultHeaderState, action: IAction): IHeaderStore => {
 	switch (action.type) {

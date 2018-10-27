@@ -94,17 +94,17 @@ const selectElement = (el: any, options: any): IAction => ({
 
 // #region TEMPLATE
 const startFetchingTemplate = (): IAction => ({
-	type: types.START_FETCHING_TEMPLATE
-});
+	type: types.START_FETCHING_TEMPLATE,
+})
 
 const endFetchingTemplate = (): IAction => ({
-	type: types.END_FETCHING_TEMPLATE
-});
+	type: types.END_FETCHING_TEMPLATE,
+})
 
 const initTemplate = (template: any): IAction => ({
 	type: types.INIT_EDIT_TEMPLATE,
-	payload: template
-});
+	payload: template,
+})
 
 // #endregion
 

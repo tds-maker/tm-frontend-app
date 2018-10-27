@@ -12,15 +12,15 @@ import Page from './components/Page'
 import PageFooter from './components/PageFooter'
 
 interface IProps {
-	info: IInfoStore;
-	languages: string;
-	options: IOptionsStore;
-	fetchTemplate: (id:string) => void;
+	info: IInfoStore
+	languages: string
+	options: IOptionsStore
+	fetchTemplate: (id: string) => void
 }
 
 class EditTemplate extends React.Component<IProps> {
-	public componentWillMount(){
-		this.props.fetchTemplate('fake-id');
+	public componentWillMount() {
+		this.props.fetchTemplate('fake-id')
 	}
 	public render() {
 		const { name, version } = this.props.info

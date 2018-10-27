@@ -3,8 +3,11 @@ import IStore from '../../../../../store/IStore'
 
 const info = (state: IStore) => state.template.editTemplate.info
 const infoLanguagesAsText = (state: IStore) => {
-	return state.template.editTemplate.info.languages ? state.template.editTemplate.info.languages.map(language => config.languages[language]).join(', ')
-	: "";
+	return state.template.editTemplate.info.languages
+		? state.template.editTemplate.info.languages
+				.map(language => config.languages[language])
+				.join(', ')
+		: ''
 }
 const options = (state: IStore) => state.template.editTemplate.options
 const activeHeader = (state: IStore) => {

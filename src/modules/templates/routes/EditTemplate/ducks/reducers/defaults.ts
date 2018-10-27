@@ -1,4 +1,11 @@
-import { IBodyStore, IFooterStore, IHeaderStore, IOptionsStore, IPagesStore, IUndeRedoStore} from "../interfaces";
+import {
+	IBodyStore,
+	IFooterStore,
+	IHeaderStore,
+	IOptionsStore,
+	IPagesStore,
+	IUndeRedoStore,
+} from '../interfaces'
 
 export const defaultHeaderState: IHeaderStore = {
 	0: {
