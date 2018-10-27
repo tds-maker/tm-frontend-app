@@ -1,5 +1,5 @@
 import * as React from 'react'
-import TextGroup from './groups/TextGroup';
+import TextGroup from './groups/TextGroup'
 import './toolbar.style.scss'
 
 interface IProps {
@@ -7,19 +7,20 @@ interface IProps {
 }
 
 class Toolbar extends React.PureComponent<IProps> {
-
-	public renderGroup(groupName:string){
-		switch(groupName){
+	public renderGroup(groupName: string) {
+		switch (groupName) {
 			case 'text':
-				return <TextGroup />;
+				return <TextGroup />
 			default:
-				return null;
+				return null
 		}
 	}
 	public render() {
 		return (
 			<div className="toolbar clearfix">
-				<div className="toolbar-left clearfix">{this.renderGroup(this.props.activeToolbar)}</div>
+				<div className="toolbar-left clearfix">
+					{this.renderGroup(this.props.activeToolbar)}
+				</div>
 				<div className="toolbar-right">
 					<div className="group">
 						<div className="dropdown toolbar-item translate">

@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
-import editTemplateReducer from '../routes/EditTemplate/ducks';
-
+import { combineReducers } from 'redux'
+import editTemplateReducer from '../routes/EditTemplate/ducks'
 
 const reducer = combineReducers({
-    editTemplate: editTemplateReducer
+	editTemplate: editTemplateReducer,
 })
 
-export default reducer;
+export default reducer

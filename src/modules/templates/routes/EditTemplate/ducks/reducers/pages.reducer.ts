@@ -1,36 +1,7 @@
 import { IPagesStore } from '../interfaces'
 import IAction from '../../../../../../store/IAction'
 import types from '../types'
-
-const defaultPage: IPagesStore = {
-	1: {
-		_meta: {
-			pageNo: 1,
-			hasDefaultHeader: true,
-			hasHeader: true,
-			hasDefaultFooter: true,
-			hasFooter: true,
-			margin: {
-				top: 40,
-				left: 40,
-				right: 40,
-				bottom: 40,
-			},
-		},
-		style: {
-			position: 'relative',
-			width: '900px',
-			height: '1273px',
-			backgroundColor: '#fff',
-			backgroundSize: 'cover',
-			backgroundPosition: '0 0',
-			backgroundRepeat: 'no-repeat',
-			paddingTop: '1px',
-			display: 'flex',
-			flexDirection: 'column',
-		},
-	},
-}
+import { defaultPageState } from './defaults';
 
 const setPageMargin = (state: IPagesStore, action: IAction) => {
 	const { pageMeta, styles } = action.payload
@@ -51,8 +22,8 @@ const setPageMargin = (state: IPagesStore, action: IAction) => {
 				key = 'left'
 				break
 		}
-		
-		prev[key] = styles[current].pxToNumber();
+
+		prev[key] = styles[current].pxToNumber()
 		return prev
 	}, {})
 	return {
@@ -69,38 +40,38 @@ const setPageMargin = (state: IPagesStore, action: IAction) => {
 		},
 	}
 }
-const pagesReducers = (state = defaultPage, action: IAction): IPagesStore => {
-	let pageMeta;
-	let isEnabled;
-	let pageNo;
+const pagesReducers = (state = defaultPageState, action: IAction): IPagesStore => {
+	let pageMeta
+	let isEnabled
+	let pageNo
 	switch (action.type) {
 		case types.CHANGE_PAGE_MARGIN:
-			return setPageMargin(state, action);
+			return setPageMargin(state, action)
 		case types.ENABLE_DISABLE_HEADER:
-			pageMeta = action.payload.pageMeta;
-			isEnabled = action.payload.isEnabled;
-			pageNo = pageMeta.pageNo;
+			pageMeta = action.payload.pageMeta
+			isEnabled = action.payload.isEnabled
+			pageNo = pageMeta.pageNo
 			return {
 				[pageNo]: {
 					...state[pageNo],
-					_meta : {
+					_meta: {
 						...state[pageNo]._meta,
-						hasHeader: isEnabled
-					}
-				}
+						hasHeader: isEnabled,
+					},
+				},
 			}
 		case types.ENABLE_DISABLE_FOOTER:
-			pageMeta = action.payload.pageMeta;
-			isEnabled = action.payload.isEnabled;
-			pageNo = pageMeta.pageNo;
+			pageMeta = action.payload.pageMeta
+			isEnabled = action.payload.isEnabled
+			pageNo = pageMeta.pageNo
 			return {
 				[pageNo]: {
 					...state[pageNo],
-					_meta : {
+					_meta: {
 						...state[pageNo]._meta,
-						hasFooter: isEnabled
-					}
-				}
+						hasFooter: isEnabled,
+					},
+				},
 			}
 		case types.UNDO:
 		case types.REDO:

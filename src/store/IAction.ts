@@ -1,5 +1,5 @@
 export default interface IAction {
-	type: string;
-	payload?: any;
-	hasAudit?: boolean;
+	type: string
+	payload?: any
+	hasAudit?: boolean
 }

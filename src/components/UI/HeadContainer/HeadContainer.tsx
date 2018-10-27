@@ -14,8 +14,8 @@ interface IRightButtonsProps {
 }
 
 interface IPropsInfo {
-	name?: string;
-	version?: string;
+	name?: string
+	version?: string
 	languages?: string
 }
 
@@ -24,7 +24,7 @@ export default class HeadContainer extends React.PureComponent<
 	any
 > {
 	public render() {
-		const {name, version, languages } = this.props;
+		const { name, version, languages } = this.props
 		return (
 			<header className="header">
 				<div className="container clearfix">
@@ -37,7 +37,9 @@ export default class HeadContainer extends React.PureComponent<
 						</a>
 						<div className="head-text">
 							<h4>{name}</h4>
-							<p>{version} | {languages}</p>
+							<p>
+								{version} | {languages}
+							</p>
 						</div>
 					</div>
 					<div className="head-mid-col text-center">

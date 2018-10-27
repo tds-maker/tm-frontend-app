@@ -1,4 +1,4 @@
-import HeaderGroup from './HeaderGroup';
+import HeaderGroup from './HeaderGroup'
 // import IStore from '../../../../../../../../store/IStore';
 // import {editTemplateOperations, editTemplateSelectors} from '../../../../ducks';
 
@@ -10,4 +10,4 @@ import HeaderGroup from './HeaderGroup';
 //     enableDisableHeader: (isEnabled: boolean) => dispatch(editTemplateOperations.changeHeaderStatus(isEnabled))
 // })
 
-export default HeaderGroup;
+export default HeaderGroup

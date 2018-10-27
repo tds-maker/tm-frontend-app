@@ -38,9 +38,7 @@ export default class Tabs extends React.PureComponent<any, IState> {
 					className={`tabs__content ${
 						child.props.tabIndex === this.state.activeTab ? 'active' : ''
 					}`}>
-					<div className="scroll-container custom-scrollbar">
-					{child.props.children}
-					</div>
+					<div className="scroll-container custom-scrollbar">{child.props.children}</div>
 				</div>
 			)
 		})

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './rightsidecontrolpanel.css'
-import Settings from './components/Settings/Settings';
+import Settings from './components/Settings/Settings'
 import Tabs from './Tabs'
 
 export default class RightSideControlPanel extends React.PureComponent<any, any> {

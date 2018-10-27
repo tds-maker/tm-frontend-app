@@ -51,7 +51,7 @@ export default class FontFamily extends React.Component<any, IFontFamilyState> {
 		return this.state.fonts.map((e, i) => {
 			return (
 				<li onClick={selectedFont => this.handleClick(e.name)} key={i}>
-					<span style={{fontFamily: e.value, fontSize: "12px"}}>{e.name}</span>
+					<span style={{ fontFamily: e.value, fontSize: '12px' }}>{e.name}</span>
 				</li>
 			)
 		})

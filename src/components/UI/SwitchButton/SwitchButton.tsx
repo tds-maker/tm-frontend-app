@@ -3,10 +3,10 @@ import * as React from 'react'
 import './switchbutton.css'
 
 interface IProps {
-	onChange?: ((e: any) => void);
-	id?: string;
-	checked: boolean;
-	children?: string;
+	onChange?: ((e: any) => void)
+	id?: string
+	checked: boolean
+	children?: string
 }
 
 const SwitchButton: React.SFC<IProps> = ({ id, onChange, checked, children }: IProps) => {
@@ -16,14 +16,14 @@ const SwitchButton: React.SFC<IProps> = ({ id, onChange, checked, children }: IP
 	return (
 		<div className="onoffswitch">
 			<input
-			type="checkbox"
-			name="onoffswitch"
-			checked={checked}
-			className={className}
-			id={id}
-			onChange={onChange}
+				type="checkbox"
+				name="onoffswitch"
+				checked={checked}
+				className={className}
+				id={id}
+				onChange={onChange}
 			/>
-			<label className="onoffswitch-label" htmlFor={id}/>
+			<label className="onoffswitch-label" htmlFor={id} />
 		</div>
 	)
 }
