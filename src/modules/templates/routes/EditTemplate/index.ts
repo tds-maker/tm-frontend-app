@@ -4,9 +4,9 @@ import { editTemplateOperations, editTemplateSelectors } from './ducks'
 import IStore from '../../../../store/IStore'
 
 const mapStateToProps = (state: IStore): object => ({
-	info: editTemplateSelectors.info(state),
-	languages: editTemplateSelectors.infoLanguagesAsText(state),
-	options: editTemplateSelectors.options(state),
+	common: editTemplateSelectors.common(state),
+	languages: editTemplateSelectors.languagesAsText(state),
+	state: editTemplateSelectors.templateState(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({

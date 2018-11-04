@@ -1,55 +1,112 @@
-import config from '../../../../../config'
 import IStore from '../../../../../store/IStore'
+import {
+	IEditTemplateCommonReducer,
+	IEditTemplateStateReducer,
+	IElement,
+	IPage,
+} from './interfaces'
+import config from '../../../../../config'
 
-const info = (state: IStore) => state.template.editTemplate.info
-const infoLanguagesAsText = (state: IStore) => {
-	return state.template.editTemplate.info.languages
-		? state.template.editTemplate.info.languages
-				.map(language => config.languages[language])
-				.join(', ')
-		: ''
-}
-const options = (state: IStore) => state.template.editTemplate.options
-const activeHeader = (state: IStore) => {
-	const currentPage = activePage(state)
-	const { headers } = state.template.editTemplate.design
-
-	if (currentPage!._meta.hasHeader) {
-		return headers[currentPage._meta.pageNo] || headers[0]
+const common = (state: IStore): IEditTemplateCommonReducer | undefined =>
+	state.template.editTemplate.common
+const languagesAsText = (state: IStore) => {
+	const _common = common(state)
+	if (_common && _common.languages) {
+		return _common.languages.map(language => config.languages[language]).join(', ')
 	} else {
-		return
+		return ''
 	}
 }
-const activeFooter = (state: IStore) => {
-	const currentPage = activePage(state)
-	const { footers } = state.template.editTemplate.design
 
-	if (currentPage!._meta.hasFooter) {
-		return footers[currentPage._meta.pageNo] || footers[0]
+const activePageNumber = (state: IStore) => templateState(state).activePage
+
+const hasUndoEnabled = (state: IStore) => {
+	if (state.template.editTemplate.design) {
+		return state.template.editTemplate.design.index > 1
+	}
+	return false
+}
+const hasRedoEnabled = (state: IStore) => {
+	if (state.template.editTemplate.design) {
+		return state.template.editTemplate.design.future.length > 0
+	}
+	return false
+}
+
+const templateState = (state: IStore): IEditTemplateStateReducer =>
+	state.template.editTemplate.state!
+
+const currentPage = (state: IStore): IPage | undefined => {
+	const activePage = templateState(state).activePage
+	if (state.template.editTemplate.design) {
+		return state.template.editTemplate.design.present.pages[activePage]
+	}
+	return
+}
+
+const currentHeader = (state: IStore): IElement | undefined => {
+	const activePage = templateState(state).activePage
+	const page = currentPage(state)!
+	const design = state.template.editTemplate.design!
+
+	if (page._meta.hasHeader) {
+		return (
+			design.present.elements.byId[`header-${activePage}`] ||
+			design.present.elements.byId['header-0']
+		)
 	} else {
-		return
+		return undefined
 	}
 }
-const activePage = (state: IStore) =>
-	state.template.editTemplate.design.pages[state.template.editTemplate.options.activePage]
-const activePageMargin = (state: IStore) => activePage(state)._meta.margin
-const activePageBody = (state: IStore) =>
-	state.template.editTemplate.design.bodies[state.template.editTemplate.options.activePage]
-const hasUndoEnabled = (state: IStore) => state.template.editTemplate.history.prevStates.length > 0
-const hasRedoEnabled = (state: IStore) => state.template.editTemplate.history.nextStates.length > 0
-const selectedElement = (state: IStore) =>
-	state.template.editTemplate.design.elements.selectedElement
+const currentFooter = (state: IStore): IElement | undefined => {
+	const activePage = templateState(state).activePage
+	const page = currentPage(state)!
+	const design = state.template.editTemplate.design!
+
+	if (page._meta.hasFooter) {
+		return (
+			design.present.elements.byId[`footer-${activePage}`] ||
+			design.present.elements.byId['footer-0']
+		)
+	} else {
+		return undefined
+	}
+}
+
+const currentPageBody = (state: IStore) => {
+	const page = currentPage(state)!
+	return state.template.editTemplate.design!.present.elements.byId[page.elements[0]]
+}
+const currentPageMargin = (state: IStore) => {
+	const page = currentPage(state)!
+	return page._meta.margin
+}
+const hasHeader = (state: IStore): boolean => {
+	const page = currentPage(state)!
+	return page._meta.hasHeader
+}
+const hasFooter = (state: IStore): boolean => {
+	const page = currentPage(state)!
+	return page._meta.hasFooter
+}
+
+const elementsById = (state: IStore) => state.template.editTemplate.design!.present.elements.byId
+const getLayout = (state: IStore) => currentPage(state)!._meta.layout
 
 export default {
-	info,
-	infoLanguagesAsText,
-	options,
-	activePage,
-	activePageBody,
-	activeHeader,
-	activeFooter,
+	getLayout,
+	common,
+	languagesAsText,
+	templateState,
+	currentPage,
+	currentHeader,
+	currentFooter,
 	hasUndoEnabled,
 	hasRedoEnabled,
-	activePageMargin,
-	selectedElement,
+	currentPageBody,
+	hasHeader,
+	hasFooter,
+	activePageNumber,
+	currentPageMargin,
+	elementsById,
 }

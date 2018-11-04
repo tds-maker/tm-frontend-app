@@ -4,9 +4,9 @@ import { editTemplateOperations, editTemplateSelectors } from '../../../../../du
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state: IStore) => ({
-	margin: editTemplateSelectors.activePageMargin(state),
-	hasHeader: editTemplateSelectors.activePage(state)._meta.hasHeader,
-	hasFooter: editTemplateSelectors.activePage(state)._meta.hasFooter,
+	margin: editTemplateSelectors.currentPageMargin(state),
+	hasHeader: editTemplateSelectors.hasHeader(state),
+	hasFooter: editTemplateSelectors.hasFooter(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -27,8 +27,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 				break
 		}
 		const styles = { [styleKey]: `${value}px` }
-
-		dispatch(editTemplateOperations.setPagePadding(styles))
+		dispatch(editTemplateOperations.resizeBody(styles))
 	},
 	changeHeaderState: (isEnabled: boolean) =>
 		dispatch(editTemplateOperations.changeHeaderStatus(isEnabled)),

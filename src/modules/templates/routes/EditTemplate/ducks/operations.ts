@@ -1,86 +1,190 @@
 import actions from './actions'
 import selectors from './selectors'
-import IStore from '../../../../../store/IStore'
+import IEditTemplateReducer from './interfaces'
+import { CSSProperties } from 'react'
+import defaultReducerObjects from './defaults'
+import { pageLayout } from './enums'
 
-const sampleTemplate = {
-	name: 'Wood Coating Template',
-	languages: ['en', 'tr'],
-	defaultLanguage: 'en',
-	version: 'v0.1',
+const reduxNormalizeEditTemplateData = (data: any): IEditTemplateReducer => {
+	const response: any = {
+		common: {
+			_id: data._id,
+			defaultLanguage: data.defaultLanguage,
+			languages: data.languages,
+			name: data.name,
+			majorVersion: data.majorVersion,
+			minorVersion: data.minorVersion,
+		},
+		design: {
+			pages: {},
+			elements: {
+				byId: {},
+				allIds: [],
+			},
+		},
+	}
+
+	const fetchElements = (elements: any): string[] => {
+		const ids = []
+		for (const element of elements) {
+			if (element.elements) {
+				element.elements = fetchElements(element.elements)
+			}
+			response.design!.elements.byId[element._id] = element
+			response.design!.elements.allIds.push(element._id)
+			ids.push(element._id)
+		}
+		return ids
+	}
+
+	response.design!.pages = Object.keys(data.design.pages).reduce((prev: any, key: string) => {
+		const currentPage = data.design.pages[key]
+		const { defaultHeader, defaultFooter } = data.design
+
+		response.design!.elements.allIds.push(defaultHeader._id)
+		response.design!.elements.allIds.push(defaultFooter._id)
+
+		defaultHeader.elements = defaultHeader.elements ? fetchElements(defaultHeader.elements) : []
+		defaultFooter.elements = defaultFooter.elements ? fetchElements(defaultFooter.elements) : []
+
+		response.design!.elements.byId[defaultHeader._id] = defaultHeader
+		response.design!.elements.byId[defaultFooter._id] = defaultFooter
+
+		prev[key] = {
+			_meta: currentPage._meta,
+			style: currentPage.style,
+			elements: fetchElements(currentPage.elements),
+		}
+		return prev
+	}, {})
+	return response
 }
 
-const { addToHistory, addToHistoryNext, addToHistoryPrev, selectElement } = actions
+const setDefaultPageDesignForEmptyTemplates = (template: any) => {
+	const page = defaultReducerObjects.PageObject
+	const bodyElement = defaultReducerObjects.SingleLayoutBodyObject(1, {
+		marginTop: '0px',
+		marginBottom: '0px',
+		marginRight: '40px',
+		marginLeft: '40px',
+	})
+	page.elements.push(bodyElement)
 
-// #region HEADERS
-const setHeaderStyle = (newStyle: object) => (dispatch: any, getState: any) => {
-	const header = selectors.activeHeader(getState())!
-	dispatch(actions.setHeaderStyle(newStyle, header._meta.page))
+	template.design = {
+		defaultHeader: defaultReducerObjects.HeaderObject,
+		defaultFooter: defaultReducerObjects.FooterObject,
+		pages: {
+			'1': page,
+		},
+	}
+
+	return template
 }
 
-const changeHeaderStatus = (isEnabled: boolean) => (dispatch: any, getState: any) => {
-	const page = selectors.activePage(getState())
-	dispatch(actions.changeHeaderStatus(isEnabled, page._meta))
-}
-// #endregion
-
-// #region FOOTERS
-const setFooterStyle = (newStyle: object) => (dispatch: any, getState: any) => {
-	const footer = selectors.activeFooter(getState())!
-	dispatch(actions.setFooterStyle(newStyle, footer._meta.page))
+const demoTemplate: any = {
+	_id: '1',
+	name: 'Sample Template Name',
+	defaultLanguage: 'tr',
+	languages: ['tr', 'en'],
+	majorVersion: 0,
+	minorVersion: 1,
 }
 
-const changeFooterStatus = (isEnabled: boolean) => (dispatch: any, getState: any) => {
-	const page = selectors.activePage(getState())
-	dispatch(actions.changeFooterStatus(isEnabled, page._meta))
-}
-// #endregion
+const { setElementStyle } = actions
 
-// #region UNDO-REDO
-const undo = () => (dispatch: any, getState: any) => {
-	const currentState: IStore = getState()
-	const prevState =
-		currentState.template.editTemplate.history.prevStates[
-			currentState.template.editTemplate.history.prevStates.length - 1
-		]
-	dispatch(actions.undo(prevState))
-}
+const resizeBody = (style: CSSProperties) => (dispatch: any, getState: any) => {
+	const state = getState()
+	const activePage = selectors.activePageNumber(state)
+	const body = selectors.currentPageBody(state)
 
-const redo = () => (dispatch: any, getState: any) => {
-	const currentState: IStore = getState()
-	const nextState = currentState.template.editTemplate.history.nextStates[0]
-	dispatch(actions.redo(nextState))
+	dispatch(actions.setElementStyle(body, style, activePage))
 }
-// #endregion
-
-// #region PAGES
-const setPagePadding = (styles: any) => (dispatch: any, getState: any) => {
-	const page = selectors.activePage(getState())
-	dispatch(actions.setPagePadding(styles, page._meta))
-}
-// #endregion
 
 // #region TEMPLATE
 const fetchTempate = (id: string) => (dispatch: any) => {
 	dispatch(actions.startFetchingTemplate())
 
 	setTimeout(() => {
-		dispatch(actions.initTemplate(sampleTemplate))
+		let template = demoTemplate
+		if (!template.design) {
+			template = setDefaultPageDesignForEmptyTemplates(template)
+		}
+		dispatch(actions.initTemplate(reduxNormalizeEditTemplateData(template)))
 		dispatch(actions.endFetchingTemplate())
 	}, 0)
 }
 // #endregion
 
+const changeHeaderStatus = (isEnabled: boolean) => (dispatch: any, getState: any) => {
+	const state = getState()
+	const pageNo = selectors.activePageNumber(state)
+	const page = selectors.currentPage(state)!
+	dispatch(actions.changeHeaderStatus(isEnabled, pageNo, page))
+}
+
+const changeFooterStatus = (isEnabled: boolean) => (dispatch: any, getState: any) => {
+	const state = getState()
+	const pageNo = selectors.activePageNumber(state)
+	const page = selectors.currentPage(state)!
+	dispatch(actions.changeFooterStatus(isEnabled, pageNo, page))
+}
+
+const changeLayout = (layoutType: pageLayout) => (dispatch: any, getState: any) => {
+	const state = getState()
+	const currentPageNo = selectors.activePageNumber(state)
+	const currentPage = selectors.currentPage(state)!
+	const hasHeader = selectors.hasHeader(state)
+	const hasFooter = selectors.hasFooter(state)
+
+	const marginStyle = {
+		marginLeft: `${currentPage._meta.margin.left}px`,
+		marginRight: `${currentPage._meta.margin.right}px`,
+		marginTop: hasHeader ? '0px' : `${currentPage._meta.margin.top}px`,
+		marginBottom: hasFooter ? '0px' : `${currentPage._meta.margin.bottom}px`,
+	}
+
+	let layoutBody
+	switch (layoutType) {
+		case pageLayout.singleColumn:
+		default:
+			layoutBody = defaultReducerObjects.SingleLayoutBodyObject(currentPageNo, marginStyle)
+			break
+		case pageLayout.doubleColumn:
+			layoutBody = defaultReducerObjects.DoubleLayoutBodyObject(currentPageNo, marginStyle)
+			break
+		case pageLayout.tripleColumn:
+			layoutBody = defaultReducerObjects.TripleLayoutBodyObject(currentPageNo, marginStyle)
+			break
+		case pageLayout.singleTopDoubleBottom:
+			layoutBody = defaultReducerObjects.SingleTopDoubleBottomBodyObject(
+				currentPageNo,
+				marginStyle
+			)
+			break
+		case pageLayout.doubleTopSingleBottom:
+			layoutBody = defaultReducerObjects.DoubleTopSingleBottomBodyObject(
+				currentPageNo,
+				marginStyle
+			)
+			break
+		case pageLayout.singleTopDoubleMiddleSingleBottom:
+			layoutBody = defaultReducerObjects.DoubleMiddleBodyObject(currentPageNo, marginStyle)
+			break
+	}
+	dispatch(
+		actions.changeLayout({
+			pageNo: currentPageNo,
+			layoutBody,
+			layout: layoutType,
+		})
+	)
+}
+
 export default {
 	fetchTempate,
-	setHeaderStyle,
-	setFooterStyle,
-	addToHistory,
-	addToHistoryNext,
-	addToHistoryPrev,
-	setPagePadding,
-	undo,
-	redo,
-	selectElement,
+	setElementStyle,
+	resizeBody,
 	changeHeaderStatus,
 	changeFooterStatus,
+	changeLayout,
 }

@@ -10,7 +10,7 @@ export default class Tabs extends React.PureComponent<any, IState> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
-			activeTab: 0,
+			activeTab: -1,
 			isPanelOpen: false,
 		}
 	}
@@ -58,9 +58,17 @@ export default class Tabs extends React.PureComponent<any, IState> {
 	private tooglePanel = () => {
 		this.setState(prevState => ({
 			isPanelOpen: !prevState.isPanelOpen,
+			activeTab: prevState.isPanelOpen
+				? -1
+				: prevState.activeTab === -1
+					? 0
+					: prevState.activeTab,
 		}))
 	}
 	private handleClickTabItem = (tabIndex: number) => {
-		this.setState({ activeTab: tabIndex })
+		this.setState({
+			activeTab: tabIndex,
+			isPanelOpen: true,
+		})
 	}
 }

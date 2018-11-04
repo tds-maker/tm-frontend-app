@@ -4,7 +4,7 @@ import { editTemplateSelectors } from '../../ducks'
 import IStore from '../../../../../../store/IStore'
 
 const mapStateToProps = (state: IStore) => ({
-	page: editTemplateSelectors.activePage(state),
+	page: editTemplateSelectors.currentPage(state),
 })
 
 export default connect(mapStateToProps)(Page)

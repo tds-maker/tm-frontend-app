@@ -17,18 +17,6 @@ describe('RightSideControlPanel Component', () => {
 		expect(
 			wrapper
 				.find('div')
-				.at(0)
-				.text()
-		).toEqual('LAYOUT')
-		expect(
-			wrapper
-				.find('div')
-				.at(1)
-				.text()
-		).toEqual('LAYOUT')
-		expect(
-			wrapper
-				.find('div')
 				.at(2)
 				.text()
 		).toEqual('CONTENT')

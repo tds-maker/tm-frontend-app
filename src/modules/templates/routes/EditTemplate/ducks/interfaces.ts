@@ -1,80 +1,82 @@
-export interface IInfoStore {
-	name: string
-	languages: string[]
-	defaultLanguage: string
-	version: string
+import { CSSProperties } from 'react'
+import types from './types'
+import { metaDomType, metaType, pageLayout } from './enums'
+
+interface IMeta {
+	typeName: metaType
+	htmlDom: metaDomType
 }
 
-export interface IOptionsStore {
-	activeToolbar: string
-	activePage: number
+interface IPageBaseMeta {
+	hasHeader: boolean
+	hasFooter: boolean
+	layout: pageLayout
+	margin: {
+		top: number
+		bottom: number
+		left: number
+		right: number
+	}
+}
+
+type IPageMeta = IMeta & IPageBaseMeta
+
+export interface IElement {
+	_id: string
+	_meta: IMeta
+	style: CSSProperties
+	elements: string[]
 }
 
 export interface IPage {
-	_meta: {
-		pageNo: number
-		hasHeader: boolean
-		hasDefaultHeader: boolean
-		hasDefaultFooter: boolean
-		hasFooter: boolean
-		margin: {
-			top: number
-			bottom: number
-			left: number
-			right: number
-		}
-	}
-	style: any
+	_meta: IPageMeta
+	style: CSSProperties
+	elements: string[]
 }
-export interface IPagesStore {
+
+export interface IAction {
+	type: types
+	payload?: any
+}
+
+export interface IPagesReducer {
 	[key: number]: IPage
 }
-
-export interface IBody {
-	style: object
-}
-export interface IBodyStore {
-	[key: number]: IBody
-}
-
-export interface IHeader {
-	_meta: {
-		page: number
+export interface IElementsReducer {
+	byId: {
+		[key: string]: IElement
 	}
-	style: any
-}
-export interface IHeaderStore {
-	[key: number]: IHeader
+	allIds: string[]
 }
 
-export interface IFooter {
-	_meta: {
-		page: number
+export interface IEditTemplateStateReducer {
+	fetchedFromServer: boolean
+	activePage: number
+	activeToolbar: string
+}
+
+export interface IEditTemplateCommonReducer {
+	_id: string
+	name: string
+	defaultLanguage: string
+	languages: string[]
+	majorVersion: number
+	minorVersion: number
+}
+
+export interface IEditTemplateDesignReducer {
+	pages: IPagesReducer
+	elements: IElementsReducer
+}
+
+export default interface IEditTemplateReducer {
+	state?: IEditTemplateStateReducer
+	common?: IEditTemplateCommonReducer
+	design?: {
+		past: any[]
+		present: IEditTemplateDesignReducer
+		future: any[]
+		index: number
+		limit: number
 	}
-	style: any
-}
-export interface IFooterStore {
-	[key: number]: IFooter
-}
-
-export interface IUndeRedoStore {
-	prevStates: any[]
-	nextStates: any[]
-}
-
-export interface IElementsStore {
-	selectedElement?: any
-}
-
-export default interface IEditTemplateStore {
-	info: IInfoStore
-	options: IOptionsStore
-	design: {
-		pages: IPagesStore
-		bodies: IBodyStore
-		headers: IHeaderStore
-		footers: IFooterStore
-		elements: any
-	}
-	history: IUndeRedoStore
 }

@@ -45,7 +45,6 @@ const BodyMarginResizerHOC = (WrappedComponent: any, options: IBodyResizerOption
 	return class Resizer extends React.Component<any, IState> {
 		constructor(props: any) {
 			super(props)
-
 			this.state = {
 				isResizing: false,
 				resizeTarget: '',

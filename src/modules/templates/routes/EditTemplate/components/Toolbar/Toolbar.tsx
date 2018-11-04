@@ -5,7 +5,6 @@ import './toolbar.style.scss'
 
 interface IProps {
 	activeToolbar: string
-	selectedElement: any
 }
 
 class Toolbar extends React.PureComponent<IProps> {

@@ -1,14 +1,12 @@
 import { connect } from 'react-redux'
+import { ActionCreators } from 'redux-undo'
 import UndoRedoButton from './UndoRedoButton'
-import {
-	editTemplateOperations,
-	editTemplateSelectors,
-} from '../../../modules/templates/routes/EditTemplate/ducks'
+import { editTemplateSelectors } from '../../../modules/templates/routes/EditTemplate/ducks'
 import IStore from '../../../store/IStore'
 
 const mapDispatchToState = (dispatch: any) => ({
-	handleClickUndo: () => dispatch(editTemplateOperations.undo()),
-	handleClickRedo: () => dispatch(editTemplateOperations.redo()),
+	handleClickUndo: () => dispatch(ActionCreators.undo()),
+	handleClickRedo: () => dispatch(ActionCreators.redo()),
 })
 
 const mapStateToProps = (state: IStore) => ({

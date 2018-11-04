@@ -1,6 +1,7 @@
 import * as React from 'react'
 import './rightsidecontrolpanel.css'
 import Settings from './components/Settings/Settings'
+import Layouts from './components/Layouts/Layouts'
 import Tabs from './Tabs'
 
 export default class RightSideControlPanel extends React.PureComponent<any, any> {
@@ -11,7 +12,7 @@ export default class RightSideControlPanel extends React.PureComponent<any, any>
 					LAYOUT
 				</div>
 				<div data-icon="icon-view_quilt" title="LAYOUT" tabIndex={1}>
-					LAYOUT
+					<Layouts />
 				</div>
 				<div data-icon="icon-side_content" title="CONTENT" tabIndex={2}>
 					CONTENT

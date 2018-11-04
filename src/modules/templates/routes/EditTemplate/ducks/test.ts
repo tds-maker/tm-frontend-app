@@ -1,275 +1,226 @@
 import actions from './actions'
+import { IAction, IElement, IPage } from './interfaces'
+import { metaDomType, metaType, pageLayout } from './enums'
 import types from './types'
-import infoReducer from './reducers/info.reducer'
-import optionsReducer from './reducers/options.reducer'
-import IAction from '../../../../../store/IAction'
-import { defaultOptionsState, defaultPageState } from './reducers/defaults'
-import pagesReducers from './reducers/pages.reducer'
-import '../../../../../utils/string.prototypes'
+import selectors from './selectors'
+import operations from './operations'
 
+// import '../../../../../utils/string.prototypes'
+const page: IPage = {
+	_meta: {
+		hasHeader: true,
+		hasFooter: true,
+		htmlDom: metaDomType.div,
+		typeName: metaType.bodyContainer,
+		layout: pageLayout.singleColumn,
+		margin: { top: 0, bottom: 0, left: 40, right: 40 },
+	},
+	elements: [],
+	style: {},
+}
 describe('Edit template tests', () => {
 	describe('Actions', () => {
-		describe('Template', () => {
-			it('should create start fetching action', () => {
-				const action: IAction = {
-					type: types.START_FETCHING_TEMPLATE,
-				}
-				expect(actions.startFetchingTemplate()).toEqual(action)
-			})
+		it('Set element style action', () => {
+			const fakeElement: IElement = {
+				_id: 'fake-id',
+				_meta: {
+					typeName: metaType.text,
+					htmlDom: metaDomType.div,
+				},
+				elements: [],
+				style: {
+					width: '10px',
+				},
+			}
 
-			it('should create end fetching action', () => {
-				const action: IAction = {
-					type: types.END_FETCHING_TEMPLATE,
-				}
-				expect(actions.endFetchingTemplate()).toEqual(action)
-			})
-
-			it('should create init template action', () => {
-				const action: IAction = {
-					type: types.INIT_EDIT_TEMPLATE,
-					payload: 'fake-template',
-				}
-				expect(actions.initTemplate('fake-template')).toEqual(action)
-			})
-		})
-
-		describe('Page', () => {
-			it('should create Change Page Margin action', () => {
-				const action: IAction = {
-					type: types.CHANGE_PAGE_MARGIN,
-					payload: {
-						pageMeta: 'fake-meta',
-						styles: 'fake-style',
-					},
-					hasAudit: true,
-				}
-
-				expect(actions.setPagePadding('fake-style', 'fake-meta')).toEqual(action)
+			expect(actions.setElementStyle(fakeElement, { width: '20px' }, 'options')).toEqual({
+				type: types.SET_ELEMENT_STYLE,
+				payload: {
+					element: fakeElement,
+					style: { width: '20px' },
+					options: 'options',
+				},
 			})
 		})
 
-		describe('Page Header', () => {
-			it('should create Set Header Style action', () => {
-				const style = { height: '5px' }
-				const action: IAction = {
-					type: types.CHANGE_HEADER_STYLE,
-					payload: {
-						page: 1,
-						style,
-					},
-					hasAudit: true,
-				}
-				expect(actions.setHeaderStyle(style, 1)).toEqual(action)
-			})
-
-			it('should create Change Header Status action', () => {
-				const action: IAction = {
-					type: types.ENABLE_DISABLE_HEADER,
-					payload: {
-						isEnabled: true,
-						pageMeta: 'fake-meta',
-					},
-					hasAudit: true,
-				}
-				expect(actions.changeHeaderStatus(true, 'fake-meta')).toEqual(action)
+		it('should create changeHeaderStatus action', () => {
+			expect(actions.changeHeaderStatus(true, 1, page)).toEqual({
+				type: types.CHANGE_HEADER_STATUS,
+				payload: {
+					isEnabled: true,
+					pageNo: 1,
+					page,
+				},
 			})
 		})
 
-		describe('Page Footer', () => {
-			it('should create Set Footer Style action', () => {
-				const style = { height: '5px' }
-				const action: IAction = {
-					type: types.CHANGE_FOOTER_STYLE,
-					payload: {
-						page: 1,
-						style,
-					},
-					hasAudit: true,
-				}
-				expect(actions.setFooterStyle(style, 1)).toEqual(action)
-			})
-
-			it('should create Change Footer Status action', () => {
-				const action: IAction = {
-					type: types.ENABLE_DISABLE_FOOTER,
-					payload: {
-						isEnabled: true,
-						pageMeta: 'fake-meta',
-					},
-					hasAudit: true,
-				}
-				expect(actions.changeFooterStatus(true, 'fake-meta')).toEqual(action)
+		it('should create changeFooterStatus action', () => {
+			expect(actions.changeFooterStatus(true, 1, page)).toEqual({
+				type: types.CHANGE_FOOTER_STATUS,
+				payload: {
+					isEnabled: true,
+					pageNo: 1,
+					page,
+				},
 			})
 		})
 
-		describe('Undo Redo', () => {
-			it('should create add to history action', () => {
-				const action: IAction = {
-					type: types.ADD_TO_HISTORY,
-					payload: 'fake-data',
-				}
-				expect(actions.addToHistory('fake-data')).toEqual(action)
-			})
-
-			it('should create add to history next action', () => {
-				const action: IAction = {
-					type: types.ADD_TO_HISTORY_NEXT,
-					payload: 'fake-data',
-				}
-				expect(actions.addToHistoryNext('fake-data')).toEqual(action)
-			})
-
-			it('should create add to history prev action', () => {
-				const action: IAction = {
-					type: types.ADD_TO_HISTORY_PREV,
-					payload: 'fake-data',
-				}
-				expect(actions.addToHistoryPrev('fake-data')).toEqual(action)
-			})
-
-			it('should create undo action', () => {
-				const action: IAction = {
-					type: types.UNDO,
-					payload: 'fake-data',
-				}
-				expect(actions.undo('fake-data')).toEqual(action)
-			})
-
-			it('should create redo action', () => {
-				const action: IAction = {
-					type: types.REDO,
-					payload: 'fake-data',
-				}
-				expect(actions.redo('fake-data')).toEqual(action)
+		it('should create changeLayout action', () => {
+			expect(actions.changeLayout('fake-layout')).toEqual({
+				type: types.CHANGE_LAYOUT,
+				payload: 'fake-layout',
 			})
 		})
 
-		describe('Element', () => {
-			it('should create Select Element action', () => {
-				const action: IAction = {
-					type: types.SELECT_ELEMENT,
-					payload: {
-						el: 'fake-element',
-						options: 'fake-options',
-					},
-					hasAudit: false,
-				}
+		it('should create startFetchingTemplate action', () => {
+			expect(actions.startFetchingTemplate()).toEqual({
+				type: types.START_FETCHING_TEMPLATE,
+			})
+		})
 
-				expect(actions.selectElement('fake-element', 'fake-options')).toEqual(action)
+		it('should create endFetchingTemplate action', () => {
+			expect(actions.endFetchingTemplate()).toEqual({
+				type: types.END_FETCHING_TEMPLATE,
+			})
+		})
+
+		it('should create initTemplate action', () => {
+			expect(actions.initTemplate('fake-template')).toEqual({
+				type: types.INIT_EDIT_TEMPLATE,
+				payload: 'fake-template',
 			})
 		})
 	})
 
-	describe('Reducers', () => {
-		describe('Info', () => {
-			it('should init edit tempate', () => {
-				const data = {
-					languages: ['tr', 'en'],
-					defaultLanguage: 'tr',
-					name: 'fake-template',
-					version: 'v1.0',
-				}
-				const action: IAction = {
-					type: types.INIT_EDIT_TEMPLATE,
-					payload: data,
-				}
-				expect(infoReducer(undefined, action)).toEqual(data)
-			})
+	describe('Operations', () => {
+		it('should run changeHeaderStatus operation', () => {
+			const action: IAction = {
+				type: types.CHANGE_HEADER_STATUS,
+				payload: {
+					isEnabled: true,
+					pageNo: 1,
+					page,
+				},
+			}
+			const dispatch = jest.fn()
+			const getState = jest.fn(() => ({}))
+			selectors.activePageNumber = jest.fn(() => 1)
+			selectors.currentPage = jest.fn(() => page)
+			actions.changeHeaderStatus = jest.fn(() => action)
+
+			operations.changeHeaderStatus(true)(dispatch, getState)
+
+			expect(dispatch).toBeCalledTimes(1)
+			expect(dispatch).toBeCalledWith(action)
+
+			expect(getState).toBeCalledTimes(1)
+			expect(getState).toHaveReturnedWith({})
+
+			expect(selectors.activePageNumber).toBeCalledTimes(1)
+			expect(selectors.activePageNumber).toBeCalledWith({})
+			expect(selectors.activePageNumber).toHaveReturnedWith(1)
+
+			expect(selectors.currentPage).toBeCalledTimes(1)
+			expect(selectors.currentPage).toBeCalledWith({})
+			expect(selectors.currentPage).toHaveReturnedWith(page)
+
+			expect(actions.changeHeaderStatus).toBeCalledTimes(1)
+			expect(actions.changeHeaderStatus).toBeCalledWith(true, 1, page)
 		})
 
-		describe('Options', () => {
-			it('should select element', () => {
-				const action: IAction = {
-					type: types.SELECT_ELEMENT,
-					payload: {
-						options: { type: 'fake-element' },
-					},
-				}
+		it('should run changeFooterStatus operation', () => {
+			const action: IAction = {
+				type: types.CHANGE_FOOTER_STATUS,
+				payload: {
+					isEnabled: true,
+					pageNo: 1,
+					page,
+				},
+			}
+			const dispatch = jest.fn()
+			const getState = jest.fn(() => ({}))
+			selectors.activePageNumber = jest.fn(() => 1)
+			selectors.currentPage = jest.fn(() => page)
+			actions.changeFooterStatus = jest.fn(() => action)
 
-				expect(defaultOptionsState.activeToolbar).toEqual('text')
-				const nextState = optionsReducer(undefined, action)
-				expect(nextState).not.toEqual(defaultOptionsState)
-				expect(nextState.activeToolbar).toEqual('fake-element')
-			})
+			operations.changeFooterStatus(true)(dispatch, getState)
+
+			expect(dispatch).toBeCalledTimes(1)
+			expect(dispatch).toBeCalledWith(action)
+
+			expect(getState).toBeCalledTimes(1)
+			expect(getState).toHaveReturnedWith({})
+
+			expect(selectors.activePageNumber).toBeCalledTimes(1)
+			expect(selectors.activePageNumber).toBeCalledWith({})
+			expect(selectors.activePageNumber).toHaveReturnedWith(1)
+
+			expect(selectors.currentPage).toBeCalledTimes(1)
+			expect(selectors.currentPage).toBeCalledWith({})
+			expect(selectors.currentPage).toHaveReturnedWith(page)
+
+			expect(actions.changeFooterStatus).toBeCalledTimes(1)
+			expect(actions.changeFooterStatus).toBeCalledWith(true, 1, page)
 		})
 
-		describe('Pages', () => {
-			it('should set page margin', () => {
-				const action: IAction = {
-					type: types.CHANGE_PAGE_MARGIN,
-					payload: {
-						pageMeta: { pageNo: 1 },
-						styles: {
-							marginTop: '1px',
-							marginRight: '2px',
-							marginBottom: '3px',
-							marginLeft: '4px',
-						},
-					},
-				}
+		it('should run resizeBody operation', () => {
+			const action: IAction = {
+				type: types.SET_ELEMENT_STYLE,
+				payload: {
+					style: { marginLeft: '20px' },
+				},
+			}
 
-				expect(defaultPageState[1]._meta.margin).toEqual({
-					top: 40,
-					left: 40,
-					right: 40,
-					bottom: 40,
-				})
+			const element: IElement = {
+				_id: 'fake-element',
+				_meta: {
+					htmlDom: metaDomType.div,
+					typeName: metaType.bodyContainer,
+				},
+				elements: [],
+				style: {},
+			}
 
-				const newState = pagesReducers(undefined, action)
-				expect(newState).not.toEqual(defaultPageState)
-				expect(newState[1]._meta.margin).toEqual({
-					top: 1,
-					right: 2,
-					bottom: 3,
-					left: 4,
-				})
-			})
+			const dispatch = jest.fn()
+			const getState = jest.fn(() => ({}))
+			selectors.activePageNumber = jest.fn(() => 1)
+			selectors.currentPageBody = jest.fn((): IElement => element)
+			actions.setElementStyle = jest.fn(() => action)
 
-			it('should enable/disable header', () => {
-				const action: IAction = {
-					type: types.ENABLE_DISABLE_HEADER,
-					payload: {
-						isEnabled: false,
-						pageMeta: { pageNo: 1 },
-					},
-				}
+			operations.resizeBody({ marginLeft: '20px' })(dispatch, getState)
 
-				expect(defaultPageState[1]._meta.hasHeader).toBeTruthy()
+			expect(dispatch).toBeCalledTimes(1)
+			expect(dispatch).toBeCalledWith(action)
 
-				// Disable
-				const state_1 = pagesReducers(undefined, action)
-				expect(state_1).not.toEqual(defaultPageState)
-				expect(state_1[1]._meta.hasHeader).toBeFalsy()
+			expect(getState).toBeCalledTimes(1)
+			expect(getState).toReturnWith({})
 
-				// Enable
-				action.payload.isEnabled = true
-				const state_2 = pagesReducers(state_1, action)
-				expect(state_2).not.toEqual(state_1)
-				expect(state_2[1]._meta.hasHeader).toBeTruthy()
-			})
+			expect(selectors.activePageNumber).toBeCalledTimes(1)
+			expect(selectors.activePageNumber).toBeCalledWith({})
+			expect(selectors.activePageNumber).toReturnWith(1)
 
-			it('should enable/disable footer', () => {
-				const action: IAction = {
-					type: types.ENABLE_DISABLE_FOOTER,
-					payload: {
-						isEnabled: false,
-						pageMeta: { pageNo: 1 },
-					},
-				}
+			expect(selectors.currentPageBody).toBeCalledTimes(1)
+			expect(selectors.currentPageBody).toBeCalledWith({})
+			expect(selectors.currentPageBody).toReturnWith(element)
 
-				expect(defaultPageState[1]._meta.hasFooter).toBeTruthy()
+			expect(actions.setElementStyle).toBeCalledTimes(1)
+			expect(actions.setElementStyle).toReturnWith(action)
+		})
 
-				// Disable
-				const state_1 = pagesReducers(undefined, action)
-				expect(state_1).not.toEqual(defaultPageState)
-				expect(state_1[1]._meta.hasFooter).toBeFalsy()
+		it('should run fetchTemplate opeartion', done => {
+			const dispatch = jest.fn()
 
-				// Enable
-				action.payload.isEnabled = true
-				const state_2 = pagesReducers(state_1, action)
-				expect(state_2).not.toEqual(state_1)
-				expect(state_2[1]._meta.hasFooter).toBeTruthy()
-			})
+			operations.fetchTempate('fake-id')(dispatch)
+			setTimeout(() => {
+				expect(dispatch).toBeCalledTimes(3)
+				expect(dispatch).toBeCalledWith(actions.startFetchingTemplate())
+				expect(dispatch).toBeCalledWith(actions.endFetchingTemplate())
+				done()
+			}, 10)
+		})
+
+		afterEach(() => {
+			jest.restoreAllMocks()
 		})
 	})
 })
