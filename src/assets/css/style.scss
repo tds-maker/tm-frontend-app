@@ -88,11 +88,12 @@ html {
 }
 
 body {
-  color: $body-text-color;
-  font-size: 13px;
+  color: #354052;
+  font-size: 1.3rem;
   font-family: 'Open Sans', sans-serif;
   background-color: #f9f9f9;
-  min-width: 1280px;
+  min-width: 1273px;
+  overflow-x: hidden;
 }
 
 .pull-left {

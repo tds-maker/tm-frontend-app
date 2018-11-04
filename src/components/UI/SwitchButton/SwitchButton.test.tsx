@@ -14,11 +14,11 @@ describe('SwitchButton Component', () => {
 
 	it('should render successfully', () => {
 		expect(wrapper.exists()).toEqual(true)
-		expect(wrapper.type()).toEqual('input')
+		expect(wrapper.type()).toEqual('div')
 	})
 
 	it('should have default class', () => {
-		expect(wrapper.prop('className')).toEqual('onoffswitch-checkbox')
+		expect(wrapper.prop('className')).toEqual('onoffswitch')
 	})
 
 	it('should have child components', () => {

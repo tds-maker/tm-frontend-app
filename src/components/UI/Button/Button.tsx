@@ -11,6 +11,8 @@ interface IProps {
 	onClick?: ((e: any) => void)
 	disabled?: boolean
 	type?: string
+	style?: any
+	renderAs?: string
 }
 
 const Button: React.SFC<IProps> = (props: IProps) => {
