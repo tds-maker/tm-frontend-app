@@ -12,7 +12,7 @@ interface IProps {
 	disabled?: boolean
 	type?: string
 	style?: any
-	renderAs?: string
+	renderAs?: any
 }
 
 const Button: React.SFC<IProps> = (props: IProps) => {
