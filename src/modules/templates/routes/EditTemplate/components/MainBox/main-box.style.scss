@@ -1,0 +1,14 @@
+.main-box {
+    display: block;
+    max-width: 910px;
+    margin: 0 auto;
+    position: relative;
+
+    .scroll-container {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(100vh - 193px);
+        padding: 0 10px 0;
+        margin: 0 -10px 0;
+    }
+}

@@ -34,7 +34,7 @@ const loadingHOC = ({ propName, loadingTime = false }: IProps) => <P extends {}>
 			const myProps = {
 				loadingTime: ((this.endTimer - this.startTimer) / 1000).toFixed(2),
 			}
-			console.log(this)
+
 			if (loadingTime) {
 				console.log(
 					`%c Loading Time %c ${myProps.loadingTime} %c`,

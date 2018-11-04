@@ -1,0 +1,12 @@
+.main-container {
+    padding: 193px 100px 0 90px;
+    min-width: 1273px;
+    -webkit-transition: padding-right .3s ease-in-out;
+    -moz-transition: padding-right .3s ease-in-out;
+    -o-transition: padding-right .3s ease-in-out;
+    transition: padding-right .3s ease-in-out;
+}
+
+.selected-element {
+    outline: 1px solid #2ea2f8;
+}

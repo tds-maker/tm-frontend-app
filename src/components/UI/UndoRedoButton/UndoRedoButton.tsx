@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './undoredobutton.css'
+import './undoredobutton.style.scss'
 
 export interface IProps {
 	handleClickUndo?: () => void
@@ -19,7 +19,7 @@ export default class IApp extends React.Component<IProps> {
 					className={`${
 						undoEnabled
 							? 'toolbar-item history-step'
-							: 'toolbar-item history-step-disabled'
+							: 'toolbar-item history-step history-step--disabled'
 					}`}>
 					<i className="icon-undo" />
 				</a>
@@ -28,7 +28,7 @@ export default class IApp extends React.Component<IProps> {
 					className={`${
 						redoEnabled
 							? 'toolbar-item history-step'
-							: 'toolbar-item history-step-disabled'
+							: 'toolbar-item history-step history-step--disabled'
 					}`}>
 					<i className="icon-redo" />
 				</a>
