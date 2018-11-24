@@ -1,6 +1,6 @@
 import types from '../types'
 import { IAction, IEditTemplateStateReducer } from '../interfaces'
-import update from 'immutability-helper';
+import update from 'immutability-helper'
 
 const defaultState: IEditTemplateStateReducer = {
 	activePage: 1,
@@ -19,11 +19,11 @@ const stateReducer = (
 			}
 		case types.SELECT_ELEMENT:
 			return update(state, {
-				selectedElement : { $set: action.payload }
+				selectedElement: { $set: action.payload },
 			})
 		case types.DE_SELECT_ELEMENT:
 			return update(state, {
-				selectedElement : {$set: undefined}
+				selectedElement: { $set: undefined },
 			})
 		default:
 			return state

@@ -3,10 +3,10 @@ import types from './types'
 import { metaDomType, metaType, moveState, pageLayout } from './enums'
 
 interface IMeta {
-	typeName: metaType;
-	htmlDom: metaDomType;
-	moveState: moveState;
-	containerId: string;
+	typeName: metaType
+	htmlDom: metaDomType
+	moveState: moveState
+	containerId: string
 }
 
 interface IPageBaseMeta {
@@ -53,10 +53,10 @@ export interface IElementsReducer {
 }
 
 export interface IEditTemplateStateReducer {
-	fetchedFromServer: boolean;
-	activePage: number;
-	activeToolbar: string;
-	selectedElement?: string;
+	fetchedFromServer: boolean
+	activePage: number
+	activeToolbar: string
+	selectedElement?: string
 }
 
 export interface IEditTemplateCommonReducer {

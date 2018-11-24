@@ -6,8 +6,8 @@ export interface IFontSizeState {
 	fontsize: number
 	isPopoverActive: boolean
 }
-interface IProps{
-	onChange:(value:number) => void;
+interface IProps {
+	onChange: (value: number) => void
 }
 export default class FontSize extends React.Component<IProps, IFontSizeState> {
 	constructor(props: any) {
@@ -54,7 +54,7 @@ export default class FontSize extends React.Component<IProps, IFontSizeState> {
 			fontsize: selectedFontSize,
 			isPopoverActive: false,
 		})
-		this.props.onChange(selectedFontSize);
+		this.props.onChange(selectedFontSize)
 	}
 	private handleChange = (e: any) => {
 		if (e.target.value.match('^\\d*$') != null) {
@@ -62,6 +62,6 @@ export default class FontSize extends React.Component<IProps, IFontSizeState> {
 				fontsize: e.target.value,
 			})
 		}
-		this.props.onChange(e.target.value);
+		this.props.onChange(e.target.value)
 	}
 }

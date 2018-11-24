@@ -6,14 +6,14 @@ import PageBody from './PageBody'
 import PageFooter from './PageFooter'
 
 interface IProps {
-	page: IPage;
-	deselectElement: () => void;
+	page: IPage
+	deselectElement: () => void
 }
 
 class Page extends React.Component<IProps> {
-	constructor(props:IProps){
-		super(props);
-		this.onClick = this.onClick.bind(this);
+	constructor(props: IProps) {
+		super(props)
+		this.onClick = this.onClick.bind(this)
 	}
 	public render() {
 		return (
@@ -25,9 +25,9 @@ class Page extends React.Component<IProps> {
 		)
 	}
 
-	private onClick(e:any){
-		console.log("page");
-		this.props.deselectElement();
+	private onClick(e: any) {
+		console.log('page')
+		this.props.deselectElement()
 	}
 }
 export default Page

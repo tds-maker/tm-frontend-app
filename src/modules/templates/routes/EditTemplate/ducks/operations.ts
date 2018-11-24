@@ -4,7 +4,7 @@ import IEditTemplateReducer, { IElement } from './interfaces'
 import { CSSProperties } from 'react'
 import defaultReducerObjects from './defaults'
 import { pageLayout } from './enums'
-import IStore from '../../../../../store/IStore';
+import IStore from '../../../../../store/IStore'
 
 const reduxNormalizeEditTemplateData = (data: any): IEditTemplateReducer => {
 	const response: any = {
@@ -181,30 +181,28 @@ const changeLayout = (layoutType: pageLayout) => (dispatch: any, getState: any) 
 	)
 }
 
-const addNewElement = actions.addElement;
-const selectElement = (id:string) => (dispatch:any, getState:any) => {
-	const state:IStore = getState();
-	const selectedElementId = selectors.selectedElementId(state);
+const addNewElement = actions.addElement
+const selectElement = (id: string) => (dispatch: any, getState: any) => {
+	const state: IStore = getState()
+	const selectedElementId = selectors.selectedElementId(state)
 
-	if(!selectedElementId || selectedElementId !== id){
-		dispatch(actions.selectElement(id));
+	if (!selectedElementId || selectedElementId !== id) {
+		dispatch(actions.selectElement(id))
 	}
-
 }
-const deSelectElement = () => (dispatch:any, getState:any) => {
-	const state:IStore = getState();
-	const selectedElementId = selectors.selectedElementId(state);
-	if(selectedElementId){
+const deSelectElement = () => (dispatch: any, getState: any) => {
+	const state: IStore = getState()
+	const selectedElementId = selectors.selectedElementId(state)
+	if (selectedElementId) {
 		dispatch(actions.deSelectElement())
 	}
-};
-const moveElement = (element:IElement, targetContainerId:string) => (dispatch:any) => {
-	if(element._meta.containerId !== targetContainerId){
+}
+const moveElement = (element: IElement, targetContainerId: string) => (dispatch: any) => {
+	if (element._meta.containerId !== targetContainerId) {
 		dispatch(actions.changeElementContainer(element, targetContainerId))
-	}else{
-		dispatch(actions.setElementStyle(element, element.style));
+	} else {
+		dispatch(actions.setElementStyle(element, element.style))
 	}
-
 }
 
 export default {
@@ -218,5 +216,5 @@ export default {
 	moveElement,
 	selectElement,
 	deSelectElement,
-	setElementValue
+	setElementValue,
 }

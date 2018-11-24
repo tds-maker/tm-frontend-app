@@ -93,21 +93,24 @@ const hasFooter = (state: IStore): boolean => {
 const elementsById = (state: IStore) => state.template.editTemplate.design!.present.elements.byId
 const getLayout = (state: IStore) => currentPage(state)!._meta.layout
 const headerElements = (state: IStore) => {
-	const header = currentHeader(state);
-	if(header){
-		return header.elements.map((elementId:string) => state.template.editTemplate.design!.present.elements.byId[elementId]);
-	}else{
-		return [];
+	const header = currentHeader(state)
+	if (header) {
+		return header.elements.map(
+			(elementId: string) =>
+				state.template.editTemplate.design!.present.elements.byId[elementId]
+		)
+	} else {
+		return []
 	}
 }
 
-const selectedElement = (state:IStore) => {
-	const id = state.template.editTemplate.state!.selectedElement || "";
-	return state.template.editTemplate.design!.present.elements.byId[id];
+const selectedElement = (state: IStore) => {
+	const id = state.template.editTemplate.state!.selectedElement || ''
+	return state.template.editTemplate.design!.present.elements.byId[id]
 }
 
-const selectedElementId = (state:IStore) => {
-	return state.template.editTemplate.state!.selectedElement;
+const selectedElementId = (state: IStore) => {
+	return state.template.editTemplate.state!.selectedElement
 }
 
 export default {
@@ -128,5 +131,5 @@ export default {
 	elementsById,
 	headerElements,
 	selectedElement,
-	selectedElementId
+	selectedElementId,
 }

@@ -12,12 +12,12 @@ const setElementStyle = (element: IElement, style: CSSProperties, options?: any)
 	},
 })
 
-const setElementValue = (element: IElement, value: any):IAction => ({
+const setElementValue = (element: IElement, value: any): IAction => ({
 	type: types.UPDATE_ELEMENT_VALUE,
 	payload: {
 		element,
-		value
-	}
+		value,
+	},
 })
 
 const changeHeaderStatus = (isEnabled: boolean, pageNo: number, page: IPage): IAction => ({
@@ -58,23 +58,24 @@ const initTemplate = (template: any): IAction => ({
 })
 // #endregion
 
-const addElement = (element:IElement):IAction => ({
+const addElement = (element: IElement): IAction => ({
 	type: types.ADD_ELEMENT,
-	payload : element
-});
+	payload: element,
+})
 
-const changeElementContainer = (element:IElement, newContainerId:string):IAction =>({
-	type : types.CHANGE_ELEMENT_CONTAINER,
+const changeElementContainer = (element: IElement, newContainerId: string): IAction => ({
+	type: types.CHANGE_ELEMENT_CONTAINER,
 	payload: {
-		element, newContainerId
-	}
+		element,
+		newContainerId,
+	},
 })
-const selectElement = (elementId:string):IAction => ({
+const selectElement = (elementId: string): IAction => ({
 	type: types.SELECT_ELEMENT,
-	payload : elementId
+	payload: elementId,
 })
 
-const deSelectElement = ():IAction => ({
+const deSelectElement = (): IAction => ({
 	type: types.DE_SELECT_ELEMENT,
 })
 export default {
@@ -89,5 +90,5 @@ export default {
 	changeElementContainer,
 	selectElement,
 	deSelectElement,
-	setElementValue
+	setElementValue,
 }

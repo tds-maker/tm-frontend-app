@@ -7,8 +7,11 @@ const mapStateToProps = (state: IStore) => ({
 	page: editTemplateSelectors.currentPage(state),
 })
 
-const mapDispatchToProps = (dispatch:any) =>({
-	deselectElement: () => dispatch(editTemplateOperations.deSelectElement())
+const mapDispatchToProps = (dispatch: any) => ({
+	deselectElement: () => dispatch(editTemplateOperations.deSelectElement()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page)
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Page)

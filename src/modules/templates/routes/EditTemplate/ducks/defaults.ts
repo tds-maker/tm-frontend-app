@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
-import { IElement } from './interfaces';
-import { metaDomType, metaType, moveState } from './enums';
+import { IElement } from './interfaces'
+import { metaDomType, metaType, moveState } from './enums'
 
 const HeaderObject: any = {
 	_id: 'header-0',
@@ -82,7 +82,7 @@ const SingleLayoutBodyObject = (pageNo: number, marginStyle: CSSProperties): any
 				flex: '1',
 				overflow: 'hidden',
 			},
-			elements: []
+			elements: [],
 		},
 	],
 })
@@ -387,27 +387,27 @@ const DoubleMiddleBodyObject = (pageNo: number, marginStyle: CSSProperties): any
 	],
 })
 
-const DefaultTextElement = ():IElement => ({
+const DefaultTextElement = (): IElement => ({
 	_id: 'new',
-	_meta : {
-		htmlDom : metaDomType.label,
+	_meta: {
+		htmlDom: metaDomType.label,
 		typeName: metaType.text,
 		moveState: moveState.none,
-		containerId: ""
+		containerId: '',
 	},
-	elements : [],
-	style : {
-		width: "100%",
-		height: "auto",
-		color: "#000000",
-		marginBottom: "0px",
-		marginTop: "0px",
-		marginLeft: "0px",
-		marginRight: "0px",
-		fontWeight: "normal",
-		fontSize: "12px"
+	elements: [],
+	style: {
+		width: '100%',
+		height: 'auto',
+		color: '#000000',
+		marginBottom: '0px',
+		marginTop: '0px',
+		marginLeft: '0px',
+		marginRight: '0px',
+		fontWeight: 'normal',
+		fontSize: '12px',
 	},
-	value: 'Sample text'
+	value: 'Sample text',
 })
 
 export default {
@@ -420,5 +420,5 @@ export default {
 	SingleTopDoubleBottomBodyObject,
 	DoubleTopSingleBottomBodyObject,
 	DoubleMiddleBodyObject,
-	DefaultTextElement
+	DefaultTextElement,
 }

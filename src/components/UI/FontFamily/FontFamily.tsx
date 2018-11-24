@@ -13,7 +13,7 @@ interface IFontFamilyState {
 	fonts: IFonts[]
 }
 interface IProps {
-	onFontSelect:(font:IFonts) => void;
+	onFontSelect: (font: IFonts) => void
 }
 export default class FontFamily extends React.Component<IProps, IFontFamilyState> {
 	constructor(props: any) {
@@ -59,7 +59,7 @@ export default class FontFamily extends React.Component<IProps, IFontFamilyState
 		})
 	}
 	private handleClick = (font: IFonts) => {
-		this.setState({ selectedFont: font.name });
+		this.setState({ selectedFont: font.name })
 		this.props.onFontSelect(font)
 	}
 	private handleChange = () => {

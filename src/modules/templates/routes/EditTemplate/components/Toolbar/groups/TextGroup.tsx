@@ -1,20 +1,20 @@
 import * as React from 'react'
 import { FontFamily, FontSize, UndoRedoButton } from '../../../../../../../components'
-import { IElement } from '../../../ducks/interfaces';
-import { IFonts } from '../../../../../../../components/UI/FontFamily/FontFamily';
+import { IElement } from '../../../ducks/interfaces'
+import { IFonts } from '../../../../../../../components/UI/FontFamily/FontFamily'
 
-interface IProps{
-	element?: IElement;
-	setElementStyle? : (element:IElement, style: React.CSSProperties) => void;
+interface IProps {
+	element?: IElement
+	setElementStyle?: (element: IElement, style: React.CSSProperties) => void
 }
 
 class TextGroup extends React.PureComponent<IProps> {
-	constructor(props:IProps){
-		super(props);
-		this.onFontFamilyChange = this.onFontFamilyChange.bind(this);
-		this.onFontSizeChange = this.onFontSizeChange.bind(this);
+	constructor(props: IProps) {
+		super(props)
+		this.onFontFamilyChange = this.onFontFamilyChange.bind(this)
+		this.onFontSizeChange = this.onFontSizeChange.bind(this)
 	}
-	public render(){
+	public render() {
 		return (
 			<div>
 				<div className="group">
@@ -31,18 +31,18 @@ class TextGroup extends React.PureComponent<IProps> {
 		)
 	}
 
-	private onFontFamilyChange(font:IFonts){
-		if(this.props.element && this.props.setElementStyle){
+	private onFontFamilyChange(font: IFonts) {
+		if (this.props.element && this.props.setElementStyle) {
 			this.props.setElementStyle(this.props.element, {
-				fontFamily: font.value
+				fontFamily: font.value,
 			})
 		}
 	}
 
-	private onFontSizeChange(value:number){
-		if(this.props.element && this.props.setElementStyle){
+	private onFontSizeChange(value: number) {
+		if (this.props.element && this.props.setElementStyle) {
 			this.props.setElementStyle(this.props.element, {
-				fontSize: `${value}px`
+				fontSize: `${value}px`,
 			})
 		}
 	}
