@@ -12,6 +12,14 @@ const setElementStyle = (element: IElement, style: CSSProperties, options?: any)
 	},
 })
 
+const setElementValue = (element: IElement, value: any): IAction => ({
+	type: types.UPDATE_ELEMENT_VALUE,
+	payload: {
+		element,
+		value,
+	},
+})
+
 const changeHeaderStatus = (isEnabled: boolean, pageNo: number, page: IPage): IAction => ({
 	type: types.CHANGE_HEADER_STATUS,
 	payload: {
@@ -50,6 +58,26 @@ const initTemplate = (template: any): IAction => ({
 })
 // #endregion
 
+const addElement = (element: IElement): IAction => ({
+	type: types.ADD_ELEMENT,
+	payload: element,
+})
+
+const changeElementContainer = (element: IElement, newContainerId: string): IAction => ({
+	type: types.CHANGE_ELEMENT_CONTAINER,
+	payload: {
+		element,
+		newContainerId,
+	},
+})
+const selectElement = (elementId: string): IAction => ({
+	type: types.SELECT_ELEMENT,
+	payload: elementId,
+})
+
+const deSelectElement = (): IAction => ({
+	type: types.DE_SELECT_ELEMENT,
+})
 export default {
 	startFetchingTemplate,
 	endFetchingTemplate,
@@ -58,4 +86,9 @@ export default {
 	changeHeaderStatus,
 	changeFooterStatus,
 	changeLayout,
+	addElement,
+	changeElementContainer,
+	selectElement,
+	deSelectElement,
+	setElementValue,
 }

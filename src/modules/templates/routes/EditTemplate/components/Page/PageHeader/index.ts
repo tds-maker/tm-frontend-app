@@ -6,14 +6,12 @@ import { IElement } from '../../../ducks/interfaces'
 
 const mapStateToProps = (state: IStore) => ({
 	header: editTemplateSelectors.currentHeader(state),
-	// seletedElement: editTemplateSelectors.selectedElement(state),
+	elements: editTemplateSelectors.headerElements(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
 	changeStyle: (element: IElement, style: object) =>
 		dispatch(editTemplateOperations.setElementStyle(element, style)),
-	// selectHeader: (el: any, options: any) =>
-	// 	dispatch(editTemplateOperations.selectElement(el, options)),
 })
 
 export default connect(

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { HeadContainer } from '../../../../components'
-import Toolbar from './components/Toolbar/Toolbar'
+import Toolbar from './components/Toolbar'
 import './editTemplate.style.scss'
 import MainLeftSide from './components/MainLeftSide/MainLeftSide'
 import MainBox from './components/MainBox/MainBox'

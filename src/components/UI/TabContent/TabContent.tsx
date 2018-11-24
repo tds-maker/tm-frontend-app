@@ -9,7 +9,7 @@ export default function TabContent() {
 					<li>SMART FIELDS</li>
 				</ul>
 				<div className="main-tabs-content">
-					<div className="tabs_content active">
+					<div className="tabs_content ">
 						<div className="control-btn large">
 							<i className="icon-text_field text-yellow" />
 							<p>Text field</p>
@@ -26,7 +26,7 @@ export default function TabContent() {
 							<span>Create select list</span>
 						</div>
 					</div>
-					<div className="tabs_content  ">
+					<div className="tabs_content active">
 						<div className="control-btn small">
 							<i className="icon-product_name text-red" />
 							<p>Product name</p>

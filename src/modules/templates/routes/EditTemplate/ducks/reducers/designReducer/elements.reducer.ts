@@ -110,12 +110,47 @@ const elementsReducer = (state: IElementsReducer, action: IAction): IElementsRed
 					[action.payload.element._id]: { style: { $merge: action.payload.style } },
 				},
 			})
+		case types.UPDATE_ELEMENT_VALUE:
+			return update(state, {
+				byId: {
+					[action.payload.element._id]: { value: { $set: action.payload.value } },
+				},
+			})
 		case types.CHANGE_HEADER_STATUS:
 			return changeHeaderFooterStatus(state, action, 'header')
 		case types.CHANGE_FOOTER_STATUS:
 			return changeHeaderFooterStatus(state, action, 'footer')
 		case types.CHANGE_LAYOUT:
 			return changeLayoutElements(state, action)
+		case types.ADD_ELEMENT:
+			const newElement = action.payload as IElement
+			return update(state, {
+				byId: {
+					[newElement._meta.containerId]: { elements: { $push: [newElement._id] } },
+					$merge: {
+						[newElement._id]: { ...newElement },
+					},
+				},
+				allIds: { $push: [newElement._id] },
+			})
+		case types.CHANGE_ELEMENT_CONTAINER:
+			const element = action.payload.element as IElement
+			const newContainerId = action.payload.newContainerId
+			const indexOfPrevContainer = state.byId[element._meta.containerId].elements.indexOf(
+				element._id
+			)
+			return update(state, {
+				byId: {
+					[element._meta.containerId]: {
+						elements: { $splice: [[indexOfPrevContainer, 1]] },
+					},
+					[newContainerId]: { elements: { $push: [element._id] } },
+					[element._id]: {
+						style: { $merge: element.style },
+						_meta: { containerId: { $set: newContainerId } },
+					},
+				},
+			})
 		default:
 			return state || {}
 	}

@@ -1,9 +1,10 @@
 import actions from './actions'
 import selectors from './selectors'
-import IEditTemplateReducer from './interfaces'
+import IEditTemplateReducer, { IElement } from './interfaces'
 import { CSSProperties } from 'react'
 import defaultReducerObjects from './defaults'
 import { pageLayout } from './enums'
+import IStore from '../../../../../store/IStore'
 
 const reduxNormalizeEditTemplateData = (data: any): IEditTemplateReducer => {
 	const response: any = {
@@ -90,7 +91,7 @@ const demoTemplate: any = {
 	minorVersion: 1,
 }
 
-const { setElementStyle } = actions
+const { setElementStyle, setElementValue } = actions
 
 const resizeBody = (style: CSSProperties) => (dispatch: any, getState: any) => {
 	const state = getState()
@@ -180,6 +181,30 @@ const changeLayout = (layoutType: pageLayout) => (dispatch: any, getState: any) 
 	)
 }
 
+const addNewElement = actions.addElement
+const selectElement = (id: string) => (dispatch: any, getState: any) => {
+	const state: IStore = getState()
+	const selectedElementId = selectors.selectedElementId(state)
+
+	if (!selectedElementId || selectedElementId !== id) {
+		dispatch(actions.selectElement(id))
+	}
+}
+const deSelectElement = () => (dispatch: any, getState: any) => {
+	const state: IStore = getState()
+	const selectedElementId = selectors.selectedElementId(state)
+	if (selectedElementId) {
+		dispatch(actions.deSelectElement())
+	}
+}
+const moveElement = (element: IElement, targetContainerId: string) => (dispatch: any) => {
+	if (element._meta.containerId !== targetContainerId) {
+		dispatch(actions.changeElementContainer(element, targetContainerId))
+	} else {
+		dispatch(actions.setElementStyle(element, element.style))
+	}
+}
+
 export default {
 	fetchTempate,
 	setElementStyle,
@@ -187,4 +212,9 @@ export default {
 	changeHeaderStatus,
 	changeFooterStatus,
 	changeLayout,
+	addNewElement,
+	moveElement,
+	selectElement,
+	deSelectElement,
+	setElementValue,
 }

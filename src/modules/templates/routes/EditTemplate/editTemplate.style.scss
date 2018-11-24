@@ -10,3 +10,9 @@
 .selected-element {
     outline: 1px solid #2ea2f8;
 }
+
+.page-element {
+    &:hover{
+        outline: 1px solid #2ea2f8;
+    }
+}

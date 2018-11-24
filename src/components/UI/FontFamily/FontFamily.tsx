@@ -7,13 +7,15 @@ export interface IFonts {
 	name: string
 	value: string
 }
-export interface IFontFamilyState {
+interface IFontFamilyState {
 	isChangeAllTexts: boolean
 	selectedFont: string
 	fonts: IFonts[]
 }
-
-export default class FontFamily extends React.Component<any, IFontFamilyState> {
+interface IProps {
+	onFontSelect: (font: IFonts) => void
+}
+export default class FontFamily extends React.Component<IProps, IFontFamilyState> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
@@ -50,14 +52,15 @@ export default class FontFamily extends React.Component<any, IFontFamilyState> {
 	private returnFonts = () => {
 		return this.state.fonts.map((e, i) => {
 			return (
-				<li onClick={selectedFont => this.handleClick(e.name)} key={i}>
-					<span style={{ fontFamily: e.value, fontSize: '12px' }}>{e.name}</span>
+				<li onClick={this.handleClick.bind(this, e)} key={i}>
+					<span style={{ fontFamily: e.value, fontSize: '14px' }}>{e.name}</span>
 				</li>
 			)
 		})
 	}
-	private handleClick = (selectedFont: string) => {
-		this.setState({ selectedFont })
+	private handleClick = (font: IFonts) => {
+		this.setState({ selectedFont: font.name })
+		this.props.onFontSelect(font)
 	}
 	private handleChange = () => {
 		this.setState(prevState => ({

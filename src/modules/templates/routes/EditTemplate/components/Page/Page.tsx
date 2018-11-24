@@ -7,17 +7,27 @@ import PageFooter from './PageFooter'
 
 interface IProps {
 	page: IPage
+	deselectElement: () => void
 }
 
 class Page extends React.Component<IProps> {
+	constructor(props: IProps) {
+		super(props)
+		this.onClick = this.onClick.bind(this)
+	}
 	public render() {
 		return (
-			<div className="page" style={this.props.page.style}>
+			<div className="page" style={this.props.page.style} onClick={this.onClick}>
 				<PageHeader />
 				<PageBody />
 				<PageFooter />
 			</div>
 		)
+	}
+
+	private onClick(e: any) {
+		console.log('page')
+		this.props.deselectElement()
 	}
 }
 export default Page
