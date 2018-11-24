@@ -39,9 +39,8 @@ export default class IPopover extends React.Component<IProps, IState> {
 				className={`dropdown toolbar-item ${
 					this.props.dropdownWrapperClass ? this.props.dropdownWrapperClass : ''
 				} ${!this.isPopoverActive() ? 'active' : ''}`}>
-				<span className="popover-trigger">
+				<span className="popover-trigger" onClick={this.onToggle}>
 					<span
-						onClick={this.onToggle}
 						className={`dropdown-icon ${
 							this.props.dropdownClass ? this.props.dropdownClass : ''
 						}`}>
@@ -51,7 +50,7 @@ export default class IPopover extends React.Component<IProps, IState> {
 							this.props.dropdownText
 						)}
 					</span>
-					<span onClick={this.onToggle} className="arrow" />
+					<span className="arrow" />
 				</span>
 				<div
 					className={`popover ${this.props.popoverTypeClass} ${

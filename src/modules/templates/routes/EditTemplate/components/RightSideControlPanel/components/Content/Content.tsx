@@ -1,20 +1,36 @@
 import * as React from 'react'
-import './tabcontent.css'
-export default function TabContent() {
+import DraggableHOC, {IDraggable} from '../../../Draggable/DraggableHOC';
+import './content.css'
+import defaults from '../../../../ducks/defaults';
+import { IElement } from '../../../../ducks/interfaces';
+
+interface INewElement {
+	element: IElement
+}
+const NewTextElement = DraggableHOC({
+	effectAllowed: 'copy'
+})((props:INewElement&IDraggable) => {
+	return <div className="control-btn large" 
+		onDragStart={props.onDragStart}
+		onDrag={props.onDrag}
+		onDragEnd={props.onDragEnd}
+		draggable={true}>
+		<i className="icon-text_field text-yellow" />
+		<p>Text field</p>
+		<span>Used for input text</span>
+	</div>
+})
+
+export default function Content() {
 	return (
-		<div>
-			<div className="tabs_content active">
+		<React.Fragment>
 				<ul className="tab-content-controls">
 					<li className="active">INPUTS</li>
 					<li>SMART FIELDS</li>
 				</ul>
 				<div className="main-tabs-content">
-					<div className="tabs_content ">
-						<div className="control-btn large">
-							<i className="icon-text_field text-yellow" />
-							<p>Text field</p>
-							<span>Used for input text</span>
-						</div>
+					<div className="tabs_content active" style={{boxShadow:'none'}}>
+						<NewTextElement element={defaults.DefaultTextElement()}/>
 						<div className="control-btn large">
 							<i className="icon-collections text-red" />
 							<p>Image holder</p>
@@ -26,7 +42,7 @@ export default function TabContent() {
 							<span>Create select list</span>
 						</div>
 					</div>
-					<div className="tabs_content active">
+					<div className="tabs_content" style={{boxShadow:'none'}}>
 						<div className="control-btn small">
 							<i className="icon-product_name text-red" />
 							<p>Product name</p>
@@ -80,7 +96,6 @@ export default function TabContent() {
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</React.Fragment>
 	)
 }

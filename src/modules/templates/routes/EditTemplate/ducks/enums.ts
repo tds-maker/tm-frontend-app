@@ -15,7 +15,9 @@ export enum metaType {
 	bodyPanel = 'body-panel',
 	bodyPanelContainer = 'body-panel-container',
 }
-
+export enum moveState {
+	none, canSort, canMove
+}
 export enum metaDomType {
 	div = 'div',
 	label = 'label',

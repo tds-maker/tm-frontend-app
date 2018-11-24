@@ -1,10 +1,12 @@
 import { CSSProperties } from 'react'
 import types from './types'
-import { metaDomType, metaType, pageLayout } from './enums'
+import { metaDomType, metaType, moveState, pageLayout } from './enums'
 
 interface IMeta {
-	typeName: metaType
-	htmlDom: metaDomType
+	typeName: metaType;
+	htmlDom: metaDomType;
+	moveState: moveState;
+	containerId: string;
 }
 
 interface IPageBaseMeta {
@@ -26,6 +28,7 @@ export interface IElement {
 	_meta: IMeta
 	style: CSSProperties
 	elements: string[]
+	value?: any
 }
 
 export interface IPage {
@@ -50,9 +53,10 @@ export interface IElementsReducer {
 }
 
 export interface IEditTemplateStateReducer {
-	fetchedFromServer: boolean
-	activePage: number
-	activeToolbar: string
+	fetchedFromServer: boolean;
+	activePage: number;
+	activeToolbar: string;
+	selectedElement?: string;
 }
 
 export interface IEditTemplateCommonReducer {

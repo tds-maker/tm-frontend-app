@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto:400,400i,700,700i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import 'variables.scss';
 
 /*RESET CSS*/
@@ -146,4 +147,25 @@ label {
   top: 7px;
   right: 7px;
   line-height: 1;
+}
+.main-box{ 
+  .help-box {
+    max-width: 310px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    font-size: 1.3rem;
+    line-height: 1.62;
+    color: #9b9b9b;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    h4 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      font-weight: normal;
+    }
+  }
 }

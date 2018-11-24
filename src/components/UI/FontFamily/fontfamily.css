@@ -1,5 +1,6 @@
 .font-family {
-  width: 96px;
+  min-width: 100px !important;
+  width: auto;
 }
 
 .popover-trigger {
