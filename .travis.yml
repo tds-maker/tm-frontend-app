@@ -20,7 +20,7 @@ deploy:
     branch: master
 after_deploy:
   - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_ID -s $AWS_SECRET_ID -c $CF_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
-  notifications:
+notifications:
   email:
   - melihkorkmaz84@gmail.com
   - info@mkoseoglu.com
